@@ -1,0 +1,1048 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AuctionSniperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdvSearch">
+          <Key>
+            <PropertyRef Name="AdvSearchID" />
+          </Key>
+          <Property Name="AdvSearchID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DomainLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="Age" Type="int" />
+          <Property Name="PageRank" Type="int" />
+          <Property Name="MOZDA" Type="int" />
+          <Property Name="MOZPA" Type="int" />
+          <Property Name="MozRank" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MozTrust" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CF" Type="int" />
+          <Property Name="TF" Type="int" />
+          <Property Name="AlexARank" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MozDom" Type="int" />
+          <Property Name="MajDom" Type="int" />
+          <Property Name="SimilarWeb" Type="nvarchar" MaxLength="200" />
+          <Property Name="SemTarf" Type="nvarchar" MaxLength="50" />
+          <Property Name="DomainPrice" Type="int" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="EsitmateEnd" Type="datetime" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ref" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAuction" Type="bit" Nullable="false" />
+          <Property Name="IsGOdaddy" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alerts">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Name="AlertID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="TriggerTime" Type="datetime" Nullable="false" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+          <Property Name="AuctionID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Custom" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuctionHistory">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+          </Key>
+          <Property Name="HistoryID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuctionLink" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auctions">
+          <Key>
+            <PropertyRef Name="AuctionID" />
+          </Key>
+          <Property Name="AuctionID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="AuctionRef" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="BidCount" Type="int" Nullable="false" />
+          <Property Name="Traffic" Type="int" Nullable="false" />
+          <Property Name="Valuation" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="MinBid" Type="int" Nullable="false" />
+          <Property Name="MinOffer" Type="int" Nullable="false" />
+          <Property Name="BuyItNow" Type="int" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="EstimateEndDate" Type="datetime" />
+          <Property Name="AccountID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="MyBid" Type="int" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuctionSearch">
+          <Key>
+            <PropertyRef Name="AuctionID" />
+          </Key>
+          <Property Name="AuctionID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="AuctionRef" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="BidCount" Type="int" Nullable="false" />
+          <Property Name="Traffic" Type="int" Nullable="false" />
+          <Property Name="Valuation" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="MinBid" Type="int" Nullable="false" />
+          <Property Name="MinOffer" Type="int" Nullable="false" />
+          <Property Name="BuyItNow" Type="int" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="EstimateEndDate" Type="datetime" />
+          <Property Name="AccountID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="MyBid" Type="int" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Event" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GoDaddyAccount">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GoDaddyUsername" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="GoDaddyPassword" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Verified" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SearchConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequirePR" Type="bit" Nullable="false" />
+          <Property Name="PRMin" Type="int" Nullable="false" />
+          <Property Name="PRMax" Type="int" Nullable="false" />
+          <Property Name="MajesticBacklinksMin" Type="int" Nullable="false" />
+          <Property Name="MajesticBacklinksMAX" Type="int" Nullable="false" />
+          <Property Name="MajesticTrustFlowMin" Type="int" Nullable="false" />
+          <Property Name="MajesticTrustFlowMax" Type="int" Nullable="false" />
+          <Property Name="MajesticCitationFlowMax" Type="int" Nullable="false" />
+          <Property Name="MajesticCitationFlowMin" Type="int" Nullable="false" />
+          <Property Name="MOZPA" Type="bit" Nullable="false" />
+          <Property Name="MOZPAMin" Type="int" Nullable="false" />
+          <Property Name="MOZPAMax" Type="int" Nullable="false" />
+          <Property Name="MOZDA" Type="bit" Nullable="false" />
+          <Property Name="MOZDAMin" Type="int" Nullable="false" />
+          <Property Name="MOZDAMax" Type="int" Nullable="false" />
+          <Property Name="MajesticIPS" Type="bit" Nullable="false" />
+          <Property Name="MajesticIPSMin" Type="int" Nullable="false" />
+          <Property Name="MajesticIPSMax" Type="int" Nullable="false" />
+          <Property Name="DomainAgeMin" Type="int" Nullable="false" />
+          <Property Name="DomainAgeMax" Type="int" Nullable="false" />
+          <Property Name="DomainPrice" Type="bit" Nullable="false" />
+          <Property Name="DomainPriceMin" Type="int" Nullable="false" />
+          <Property Name="DomainPriceMax" Type="int" Nullable="false" />
+          <Property Name="FacebookLikesMin" Type="int" Nullable="false" />
+          <Property Name="FacebookLikesMax" Type="int" Nullable="false" />
+          <Property Name="FacebookSharesMin" Type="int" Nullable="false" />
+          <Property Name="FacebookSharesMax" Type="int" Nullable="false" />
+          <Property Name="TwitterShares" Type="bit" Nullable="false" />
+          <Property Name="TwitterSharesMin" Type="int" Nullable="false" />
+          <Property Name="TwitterSharesMax" Type="int" Nullable="false" />
+          <Property Name="RedditShares" Type="bit" Nullable="false" />
+          <Property Name="RedditSharesMin" Type="int" Nullable="false" />
+          <Property Name="RedditSharesMax" Type="int" Nullable="false" />
+          <Property Name="PintrestShares" Type="bit" Nullable="false" />
+          <Property Name="PintrestSharesMin" Type="int" Nullable="false" />
+          <Property Name="PintrestSharesMax" Type="int" Nullable="false" />
+          <Property Name="GPlusShares" Type="bit" Nullable="false" />
+          <Property Name="GPlusSharesMin" Type="int" Nullable="false" />
+          <Property Name="GPlusSharesMax" Type="int" Nullable="false" />
+          <Property Name="Auction" Type="bit" Nullable="false" />
+          <Property Name="BuyNow" Type="bit" Nullable="false" />
+          <Property Name="BarginBin" Type="bit" Nullable="false" />
+          <Property Name="CloseOut" Type="bit" Nullable="false" />
+          <Property Name="PendingDelete" Type="bit" Nullable="false" />
+          <Property Name="Expired" Type="bit" Nullable="false" />
+          <Property Name="GoDaddy" Type="bit" Nullable="false" />
+          <Property Name="NameJet" Type="bit" Nullable="false" />
+          <Property Name="Dynadot" Type="bit" Nullable="false" />
+          <Property Name="SnapName" Type="bit" Nullable="false" />
+          <Property Name="Sedo" Type="bit" Nullable="false" />
+          <Property Name="FakePR" Type="bit" Nullable="false" />
+          <Property Name="FakeAlexa" Type="bit" Nullable="false" />
+          <Property Name="RequireSemrushKey" Type="bit" Nullable="false" />
+          <Property Name="MajMillion" Type="bit" Nullable="false" />
+          <Property Name="QuantMillion" Type="bit" Nullable="false" />
+          <Property Name="AlexARankRequired" Type="bit" Nullable="false" />
+          <Property Name="SemrushRankReq" Type="bit" Nullable="false" />
+          <Property Name="SimilarWebRankReq" Type="bit" Nullable="false" />
+          <Property Name="RequireAv" Type="bit" Nullable="false" />
+          <Property Name="HideAdult" Type="bit" Nullable="false" />
+          <Property Name="HideSpammy" Type="bit" Nullable="false" />
+          <Property Name="HideBrand" Type="bit" Nullable="false" />
+          <Property Name="EndInLower" Type="int" Nullable="false" />
+          <Property Name="EndInUpper" Type="int" Nullable="false" />
+          <Property Name="ParentCat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChildCat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentTopCat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChildTopCat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GoogleIndex" Type="bit" Nullable="false" />
+          <Property Name="dmoz" Type="bit" Nullable="false" />
+          <Property Name="AllowDash" Type="bit" Nullable="false" />
+          <Property Name="AllowDigits" Type="bit" Nullable="false" />
+          <Property Name="OnlyDigits" Type="bit" Nullable="false" />
+          <Property Name="SalesTypeOffer" Type="bit" Nullable="false" />
+          <Property Name="SearchType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KeywordSearchType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pattern" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatternType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Droplists" Type="bit" Nullable="false" />
+          <Property Name="RequireSemrushTraffic" Type="bit" Nullable="false" />
+          <Property Name="end_asia" Type="bit" Nullable="false" />
+          <Property Name="end_at" Type="bit" Nullable="false" />
+          <Property Name="end_au" Type="bit" Nullable="false" />
+          <Property Name="end_be" Type="bit" Nullable="false" />
+          <Property Name="end_biz" Type="bit" Nullable="false" />
+          <Property Name="end_ca" Type="bit" Nullable="false" />
+          <Property Name="end_cc" Type="bit" Nullable="false" />
+          <Property Name="end_ch" Type="bit" Nullable="false" />
+          <Property Name="end_co" Type="bit" Nullable="false" />
+          <Property Name="end_com" Type="bit" Nullable="false" />
+          <Property Name="end_de" Type="bit" Nullable="false" />
+          <Property Name="end_eu" Type="bit" Nullable="false" />
+          <Property Name="end_fr" Type="bit" Nullable="false" />
+          <Property Name="end_ie" Type="bit" Nullable="false" />
+          <Property Name="end_in" Type="bit" Nullable="false" />
+          <Property Name="end_info" Type="bit" Nullable="false" />
+          <Property Name="end_it" Type="bit" Nullable="false" />
+          <Property Name="end_me" Type="bit" Nullable="false" />
+          <Property Name="end_mobi" Type="bit" Nullable="false" />
+          <Property Name="end_mx" Type="bit" Nullable="false" />
+          <Property Name="end_net" Type="bit" Nullable="false" />
+          <Property Name="end_nl" Type="bit" Nullable="false" />
+          <Property Name="end_nu" Type="bit" Nullable="false" />
+          <Property Name="end_org" Type="bit" Nullable="false" />
+          <Property Name="end_pl" Type="bit" Nullable="false" />
+          <Property Name="end_ru" Type="bit" Nullable="false" />
+          <Property Name="end_se" Type="bit" Nullable="false" />
+          <Property Name="end_su" Type="bit" Nullable="false" />
+          <Property Name="end_tv" Type="bit" Nullable="false" />
+          <Property Name="end_uk" Type="bit" Nullable="false" />
+          <Property Name="end_us" Type="bit" Nullable="false" />
+          <Property Name="end_misc" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SearchLayout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SearchValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SearchTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SearchValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemOrder" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemConfig">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ReceiveEmails" Type="bit" Nullable="false" />
+          <Property Name="AccessLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AuctionSniper.dbo.AuctionHistoryView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AuctionHistoryView">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+            <PropertyRef Name="Text" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="AuctionLink" />
+          </Key>
+          <Property Name="HistoryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="AuctionLink" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Auctions_GoDaddyAccount">
+          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="1" />
+          <End Role="Auctions" Type="Self.Auctions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoDaddyAccount">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Auctions">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Auctions_GoDaddyAccount2">
+          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="1" />
+          <End Role="AuctionSearch" Type="Self.AuctionSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoDaddyAccount">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="AuctionSearch">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GoDaddyAccount_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoDaddyAccount">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="USP_SearchQueryBuilder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="USP_SearchQueryBuilder2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AuctionSniperModelStoreContainer">
+          <EntitySet Name="AdvSearch" EntityType="Self.AdvSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alerts" EntityType="Self.Alerts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuctionHistory" EntityType="Self.AuctionHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auctions" EntityType="Self.Auctions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuctionSearch" EntityType="Self.AuctionSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventLog" EntityType="Self.EventLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoDaddyAccount" EntityType="Self.GoDaddyAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchConfig" EntityType="Self.SearchConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchLayout" EntityType="Self.SearchLayout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchTable" EntityType="Self.SearchTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemConfig" EntityType="Self.SystemConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuctionHistoryView" EntityType="Self.AuctionHistoryView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[AuctionHistoryView].[HistoryID] AS [HistoryID], 
+[AuctionHistoryView].[Text] AS [Text], 
+[AuctionHistoryView].[CreatedDate] AS [CreatedDate], 
+[AuctionHistoryView].[AuctionLink] AS [AuctionLink]
+FROM [dbo].[AuctionHistoryView] AS [AuctionHistoryView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Auctions_GoDaddyAccount" Association="Self.FK_Auctions_GoDaddyAccount">
+            <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
+            <End Role="Auctions" EntitySet="Auctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Auctions_GoDaddyAccount2" Association="Self.FK_Auctions_GoDaddyAccount2">
+            <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
+            <End Role="AuctionSearch" EntitySet="AuctionSearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GoDaddyAccount_Users" Association="Self.FK_GoDaddyAccount_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AuctionSniperModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ASEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="GoDaddyAccount" EntityType="AuctionSniperModel.GoDaddyAccount" />
+          <EntitySet Name="Users" EntityType="AuctionSniperModel.Users" />
+          <AssociationSet Name="FK_GoDaddyAccount_Users" Association="AuctionSniperModel.FK_GoDaddyAccount_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
+          </AssociationSet>
+          <EntitySet Name="Auctions" EntityType="AuctionSniperModel.Auctions" />
+          <EntitySet Name="AuctionSearch" EntityType="AuctionSniperModel.AuctionSearch" />
+          <AssociationSet Name="FK_Auctions_GoDaddyAccount" Association="AuctionSniperModel.FK_Auctions_GoDaddyAccount">
+            <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
+            <End Role="Auctions" EntitySet="Auctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Auctions_GoDaddyAccount2" Association="AuctionSniperModel.FK_Auctions_GoDaddyAccount2">
+            <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
+            <End Role="AuctionSearch" EntitySet="AuctionSearch" />
+          </AssociationSet>
+          <EntitySet Name="AuctionHistory" EntityType="AuctionSniperModel.AuctionHistory" />
+          <EntitySet Name="AuctionHistoryView" EntityType="AuctionSniperModel.AuctionHistoryView" />
+          <EntitySet Name="Alerts" EntityType="AuctionSniperModel.Alerts" />
+          <EntitySet Name="EventLog" EntityType="AuctionSniperModel.EventLog" />
+          <FunctionImport Name="USP_SearchQueryBuilder2">
+          <Parameter Name="UserID" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="SearchTable" EntityType="AuctionSniperModel.SearchTable" />
+          <EntitySet Name="SearchLayout" EntityType="AuctionSniperModel.SearchLayout" />
+          <EntitySet Name="AdvSearch" EntityType="AuctionSniperModel.AdvSearch" />
+          <EntitySet Name="SearchConfig" EntityType="AuctionSniperModel.SearchConfig" />
+          <EntitySet Name="SystemConfig" EntityType="AuctionSniperModel.SystemConfig" />
+        </EntityContainer>
+        <EntityType Name="GoDaddyAccount">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoDaddyUsername" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="GoDaddyPassword" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="AuctionSniperModel.FK_GoDaddyAccount_Users" FromRole="GoDaddyAccount" ToRole="Users" />
+          <NavigationProperty Name="Auctions" Relationship="AuctionSniperModel.FK_Auctions_GoDaddyAccount" FromRole="GoDaddyAccount" ToRole="Auctions" />
+          <NavigationProperty Name="AuctionSearch" Relationship="AuctionSniperModel.FK_Auctions_GoDaddyAccount2" FromRole="GoDaddyAccount" ToRole="AuctionSearch" />
+          <Property Type="Boolean" Name="Verified" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="GoDaddyAccount" Relationship="AuctionSniperModel.FK_GoDaddyAccount_Users" FromRole="Users" ToRole="GoDaddyAccount" />
+          <Property Type="Boolean" Name="ReceiveEmails" Nullable="false" />
+          <Property Type="Int32" Name="AccessLevel" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GoDaddyAccount_Users">
+          <End Role="Users" Type="AuctionSniperModel.Users" Multiplicity="1" />
+          <End Role="GoDaddyAccount" Type="AuctionSniperModel.GoDaddyAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoDaddyAccount">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Auctions">
+          <Key>
+            <PropertyRef Name="AuctionID" />
+          </Key>
+          <Property Type="Guid" Name="AuctionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DomainName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuctionRef" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BidCount" Nullable="false" />
+          <Property Type="Int32" Name="Traffic" Nullable="false" />
+          <Property Type="Int32" Name="Valuation" Nullable="false" />
+          <Property Type="Int32" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="MinBid" Nullable="false" />
+          <Property Type="Int32" Name="MinOffer" Nullable="false" />
+          <Property Type="Int32" Name="BuyItNow" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EstimateEndDate" Precision="3" />
+          <Property Type="Guid" Name="AccountID" Nullable="false" />
+          <Property Type="String" Name="Status" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MyBid" />
+          <Property Type="Boolean" Name="Processed" Nullable="false" />
+          <NavigationProperty Name="GoDaddyAccount" Relationship="AuctionSniperModel.FK_Auctions_GoDaddyAccount" FromRole="Auctions" ToRole="GoDaddyAccount" />
+        </EntityType>
+        <EntityType Name="AuctionSearch">
+          <Key>
+            <PropertyRef Name="AuctionID" />
+          </Key>
+          <Property Type="Guid" Name="AuctionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DomainName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuctionRef" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BidCount" Nullable="false" />
+          <Property Type="Int32" Name="Traffic" Nullable="false" />
+          <Property Type="Int32" Name="Valuation" Nullable="false" />
+          <Property Type="Int32" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="MinBid" Nullable="false" />
+          <Property Type="Int32" Name="MinOffer" Nullable="false" />
+          <Property Type="Int32" Name="BuyItNow" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EstimateEndDate" Precision="3" />
+          <Property Type="Guid" Name="AccountID" Nullable="false" />
+          <Property Type="String" Name="Status" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MyBid" />
+          <Property Type="Boolean" Name="Processed" Nullable="false" />
+          <NavigationProperty Name="GoDaddyAccount" Relationship="AuctionSniperModel.FK_Auctions_GoDaddyAccount2" FromRole="AuctionSearch" ToRole="GoDaddyAccount" />
+        </EntityType>
+        <Association Name="FK_Auctions_GoDaddyAccount">
+          <End Type="AuctionSniperModel.GoDaddyAccount" Role="GoDaddyAccount" Multiplicity="1" />
+          <End Type="AuctionSniperModel.Auctions" Role="Auctions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoDaddyAccount">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="Auctions">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Auctions_GoDaddyAccount2">
+          <End Type="AuctionSniperModel.GoDaddyAccount" Role="GoDaddyAccount" Multiplicity="1" />
+          <End Type="AuctionSniperModel.AuctionSearch" Role="AuctionSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoDaddyAccount">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="AuctionSearch">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AuctionHistory">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+          </Key>
+          <Property Type="Guid" Name="HistoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="Guid" Name="AuctionLink" Nullable="false" annotation:StoreGeneratedPattern="None" />
+        </EntityType>
+        <EntityType Name="AuctionHistoryView">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+            <PropertyRef Name="Text" />
+            <PropertyRef Name="CreatedDate" />
+            <PropertyRef Name="AuctionLink" />
+          </Key>
+          <Property Type="Guid" Name="HistoryID" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="Guid" Name="AuctionLink" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alerts">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Type="Guid" Name="AlertID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TriggerTime" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Processed" Nullable="false" />
+          <Property Type="Guid" Name="AuctionID" Nullable="false" />
+          <Property Type="Boolean" Name="Custom" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Event" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SearchTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SearchValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SearchLayout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SearchValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FieldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdvSearch">
+          <Key>
+            <PropertyRef Name="AdvSearchID" />
+          </Key>
+          <Property Name="AdvSearchID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DomainLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="PageRank" Type="Int32" />
+          <Property Name="MOZDA" Type="Int32" />
+          <Property Name="MOZPA" Type="Int32" />
+          <Property Name="MozRank" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MozTrust" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CF" Type="Int32" />
+          <Property Name="TF" Type="Int32" />
+          <Property Name="AlexARank" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MozDom" Type="Int32" />
+          <Property Name="MajDom" Type="Int32" />
+          <Property Name="SimilarWeb" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SemTarf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DomainPrice" Type="Int32" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="EsitmateEnd" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="Ref" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAuction" Type="Boolean" Nullable="false" />
+          <Property Name="IsGOdaddy" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SearchConfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequirePR" Type="Boolean" Nullable="false" />
+          <Property Name="PRMin" Type="Int32" Nullable="false" />
+          <Property Name="PRMax" Type="Int32" Nullable="false" />
+          <Property Name="MajesticBacklinksMin" Type="Int32" Nullable="false" />
+          <Property Name="MajesticBacklinksMAX" Type="Int32" Nullable="false" />
+          <Property Name="MajesticTrustFlowMin" Type="Int32" Nullable="false" />
+          <Property Name="MajesticTrustFlowMax" Type="Int32" Nullable="false" />
+          <Property Name="MajesticCitationFlowMax" Type="Int32" Nullable="false" />
+          <Property Name="MajesticCitationFlowMin" Type="Int32" Nullable="false" />
+          <Property Name="MOZPA" Type="Boolean" Nullable="false" />
+          <Property Name="MOZPAMin" Type="Int32" Nullable="false" />
+          <Property Name="MOZPAMax" Type="Int32" Nullable="false" />
+          <Property Name="MOZDA" Type="Boolean" Nullable="false" />
+          <Property Name="MOZDAMin" Type="Int32" Nullable="false" />
+          <Property Name="MOZDAMax" Type="Int32" Nullable="false" />
+          <Property Name="MajesticIPS" Type="Boolean" Nullable="false" />
+          <Property Name="MajesticIPSMin" Type="Int32" Nullable="false" />
+          <Property Name="MajesticIPSMax" Type="Int32" Nullable="false" />
+          <Property Name="DomainAgeMin" Type="Int32" Nullable="false" />
+          <Property Name="DomainAgeMax" Type="Int32" Nullable="false" />
+          <Property Name="DomainPrice" Type="Boolean" Nullable="false" />
+          <Property Name="DomainPriceMin" Type="Int32" Nullable="false" />
+          <Property Name="DomainPriceMax" Type="Int32" Nullable="false" />
+          <Property Name="FacebookLikesMin" Type="Int32" Nullable="false" />
+          <Property Name="FacebookLikesMax" Type="Int32" Nullable="false" />
+          <Property Name="FacebookSharesMin" Type="Int32" Nullable="false" />
+          <Property Name="FacebookSharesMax" Type="Int32" Nullable="false" />
+          <Property Name="TwitterShares" Type="Boolean" Nullable="false" />
+          <Property Name="TwitterSharesMin" Type="Int32" Nullable="false" />
+          <Property Name="TwitterSharesMax" Type="Int32" Nullable="false" />
+          <Property Name="RedditShares" Type="Boolean" Nullable="false" />
+          <Property Name="RedditSharesMin" Type="Int32" Nullable="false" />
+          <Property Name="RedditSharesMax" Type="Int32" Nullable="false" />
+          <Property Name="PintrestShares" Type="Boolean" Nullable="false" />
+          <Property Name="PintrestSharesMin" Type="Int32" Nullable="false" />
+          <Property Name="PintrestSharesMax" Type="Int32" Nullable="false" />
+          <Property Name="GPlusShares" Type="Boolean" Nullable="false" />
+          <Property Name="GPlusSharesMin" Type="Int32" Nullable="false" />
+          <Property Name="GPlusSharesMax" Type="Int32" Nullable="false" />
+          <Property Name="Auction" Type="Boolean" Nullable="false" />
+          <Property Name="BuyNow" Type="Boolean" Nullable="false" />
+          <Property Name="BarginBin" Type="Boolean" Nullable="false" />
+          <Property Name="CloseOut" Type="Boolean" Nullable="false" />
+          <Property Name="PendingDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Expired" Type="Boolean" Nullable="false" />
+          <Property Name="GoDaddy" Type="Boolean" Nullable="false" />
+          <Property Name="NameJet" Type="Boolean" Nullable="false" />
+          <Property Name="Dynadot" Type="Boolean" Nullable="false" />
+          <Property Name="SnapName" Type="Boolean" Nullable="false" />
+          <Property Name="Sedo" Type="Boolean" Nullable="false" />
+          <Property Name="FakePR" Type="Boolean" Nullable="false" />
+          <Property Name="FakeAlexa" Type="Boolean" Nullable="false" />
+          <Property Name="RequireSemrushKey" Type="Boolean" Nullable="false" />
+          <Property Name="MajMillion" Type="Boolean" Nullable="false" />
+          <Property Name="QuantMillion" Type="Boolean" Nullable="false" />
+          <Property Name="AlexARankRequired" Type="Boolean" Nullable="false" />
+          <Property Name="SemrushRankReq" Type="Boolean" Nullable="false" />
+          <Property Name="SimilarWebRankReq" Type="Boolean" Nullable="false" />
+          <Property Name="RequireAv" Type="Boolean" Nullable="false" />
+          <Property Name="HideAdult" Type="Boolean" Nullable="false" />
+          <Property Name="HideSpammy" Type="Boolean" Nullable="false" />
+          <Property Name="HideBrand" Type="Boolean" Nullable="false" />
+          <Property Name="EndInLower" Type="Int32" Nullable="false" />
+          <Property Name="EndInUpper" Type="Int32" Nullable="false" />
+          <Property Name="ParentCat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChildCat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentTopCat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChildTopCat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GoogleIndex" Type="Boolean" Nullable="false" />
+          <Property Name="dmoz" Type="Boolean" Nullable="false" />
+          <Property Name="AllowDash" Type="Boolean" Nullable="false" />
+          <Property Name="AllowDigits" Type="Boolean" Nullable="false" />
+          <Property Name="OnlyDigits" Type="Boolean" Nullable="false" />
+          <Property Name="SalesTypeOffer" Type="Boolean" Nullable="false" />
+          <Property Name="SearchType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="'Keyword'" />
+          <Property Name="Keyword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KeywordSearchType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pattern" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatternType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Droplists" Type="Boolean" Nullable="false" />
+          <Property Name="RequireSemrushTraffic" Type="Boolean" Nullable="false" />
+          <Property Name="end_asia" Type="Boolean" Nullable="false" />
+          <Property Name="end_at" Type="Boolean" Nullable="false" />
+          <Property Name="end_au" Type="Boolean" Nullable="false" />
+          <Property Name="end_be" Type="Boolean" Nullable="false" />
+          <Property Name="end_biz" Type="Boolean" Nullable="false" />
+          <Property Name="end_ca" Type="Boolean" Nullable="false" />
+          <Property Name="end_cc" Type="Boolean" Nullable="false" />
+          <Property Name="end_ch" Type="Boolean" Nullable="false" />
+          <Property Name="end_co" Type="Boolean" Nullable="false" />
+          <Property Name="end_com" Type="Boolean" Nullable="false" />
+          <Property Name="end_de" Type="Boolean" Nullable="false" />
+          <Property Name="end_eu" Type="Boolean" Nullable="false" />
+          <Property Name="end_fr" Type="Boolean" Nullable="false" />
+          <Property Name="end_ie" Type="Boolean" Nullable="false" />
+          <Property Name="end_in" Type="Boolean" Nullable="false" />
+          <Property Name="end_info" Type="Boolean" Nullable="false" />
+          <Property Name="end_it" Type="Boolean" Nullable="false" />
+          <Property Name="end_me" Type="Boolean" Nullable="false" />
+          <Property Name="end_mobi" Type="Boolean" Nullable="false" />
+          <Property Name="end_mx" Type="Boolean" Nullable="false" />
+          <Property Name="end_net" Type="Boolean" Nullable="false" />
+          <Property Name="end_nl" Type="Boolean" Nullable="false" />
+          <Property Name="end_nu" Type="Boolean" Nullable="false" />
+          <Property Name="end_org" Type="Boolean" Nullable="false" />
+          <Property Name="end_pl" Type="Boolean" Nullable="false" />
+          <Property Name="end_ru" Type="Boolean" Nullable="false" />
+          <Property Name="end_se" Type="Boolean" Nullable="false" />
+          <Property Name="end_su" Type="Boolean" Nullable="false" />
+          <Property Name="end_tv" Type="Boolean" Nullable="false" />
+          <Property Name="end_uk" Type="Boolean" Nullable="false" />
+          <Property Name="end_us" Type="Boolean" Nullable="false" />
+          <Property Name="end_misc" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemConfig">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AuctionSniperModelStoreContainer" CdmEntityContainer="ASEntities">
+          <EntitySetMapping Name="GoDaddyAccount">
+            <EntityTypeMapping TypeName="AuctionSniperModel.GoDaddyAccount">
+              <MappingFragment StoreEntitySet="GoDaddyAccount">
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="GoDaddyUsername" ColumnName="GoDaddyUsername" />
+                <ScalarProperty Name="GoDaddyPassword" ColumnName="GoDaddyPassword" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+                <ScalarProperty Name="ReceiveEmails" ColumnName="ReceiveEmails" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auctions">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Auctions">
+              <MappingFragment StoreEntitySet="Auctions">
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="MyBid" ColumnName="MyBid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="EstimateEndDate" ColumnName="EstimateEndDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="BuyItNow" ColumnName="BuyItNow" />
+                <ScalarProperty Name="MinOffer" ColumnName="MinOffer" />
+                <ScalarProperty Name="MinBid" ColumnName="MinBid" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Valuation" ColumnName="Valuation" />
+                <ScalarProperty Name="Traffic" ColumnName="Traffic" />
+                <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+                <ScalarProperty Name="AuctionRef" ColumnName="AuctionRef" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="AuctionID" ColumnName="AuctionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuctionSearch">
+            <EntityTypeMapping TypeName="AuctionSniperModel.AuctionSearch">
+              <MappingFragment StoreEntitySet="AuctionSearch">
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="MyBid" ColumnName="MyBid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="EstimateEndDate" ColumnName="EstimateEndDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="BuyItNow" ColumnName="BuyItNow" />
+                <ScalarProperty Name="MinOffer" ColumnName="MinOffer" />
+                <ScalarProperty Name="MinBid" ColumnName="MinBid" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Valuation" ColumnName="Valuation" />
+                <ScalarProperty Name="Traffic" ColumnName="Traffic" />
+                <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+                <ScalarProperty Name="AuctionRef" ColumnName="AuctionRef" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="AuctionID" ColumnName="AuctionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuctionHistory">
+            <EntityTypeMapping TypeName="AuctionSniperModel.AuctionHistory">
+              <MappingFragment StoreEntitySet="AuctionHistory">
+                <ScalarProperty Name="AuctionLink" ColumnName="AuctionLink" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuctionHistoryView">
+            <EntityTypeMapping TypeName="AuctionSniperModel.AuctionHistoryView">
+              <MappingFragment StoreEntitySet="AuctionHistoryView">
+                <ScalarProperty Name="AuctionLink" ColumnName="AuctionLink" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alerts">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Alerts">
+              <MappingFragment StoreEntitySet="Alerts">
+                <ScalarProperty Name="Custom" ColumnName="Custom" />
+                <ScalarProperty Name="AuctionID" ColumnName="AuctionID" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="TriggerTime" ColumnName="TriggerTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AlertID" ColumnName="AlertID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLog">
+            <EntityTypeMapping TypeName="AuctionSniperModel.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_SearchQueryBuilder2" FunctionName="AuctionSniperModel.Store.USP_SearchQueryBuilder2" />
+          <EntitySetMapping Name="SearchTable">
+            <EntityTypeMapping TypeName="AuctionSniperModel.SearchTable">
+              <MappingFragment StoreEntitySet="SearchTable">
+                <ScalarProperty Name="ItemOrder" ColumnName="ItemOrder" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="SearchValue" ColumnName="SearchValue" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchLayout">
+            <EntityTypeMapping TypeName="AuctionSniperModel.SearchLayout">
+              <MappingFragment StoreEntitySet="SearchLayout">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="SearchValue" ColumnName="SearchValue" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvSearch">
+            <EntityTypeMapping TypeName="AuctionSniperModel.AdvSearch">
+              <MappingFragment StoreEntitySet="AdvSearch">
+                <ScalarProperty Name="IsGOdaddy" ColumnName="IsGOdaddy" />
+                <ScalarProperty Name="IsAuction" ColumnName="IsAuction" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EsitmateEnd" ColumnName="EsitmateEnd" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="DomainPrice" ColumnName="DomainPrice" />
+                <ScalarProperty Name="SemTarf" ColumnName="SemTarf" />
+                <ScalarProperty Name="SimilarWeb" ColumnName="SimilarWeb" />
+                <ScalarProperty Name="MajDom" ColumnName="MajDom" />
+                <ScalarProperty Name="MozDom" ColumnName="MozDom" />
+                <ScalarProperty Name="AlexARank" ColumnName="AlexARank" />
+                <ScalarProperty Name="TF" ColumnName="TF" />
+                <ScalarProperty Name="CF" ColumnName="CF" />
+                <ScalarProperty Name="MozTrust" ColumnName="MozTrust" />
+                <ScalarProperty Name="MozRank" ColumnName="MozRank" />
+                <ScalarProperty Name="MOZPA" ColumnName="MOZPA" />
+                <ScalarProperty Name="MOZDA" ColumnName="MOZDA" />
+                <ScalarProperty Name="PageRank" ColumnName="PageRank" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DomainLink" ColumnName="DomainLink" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="AdvSearchID" ColumnName="AdvSearchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchConfig">
+            <EntityTypeMapping TypeName="AuctionSniperModel.SearchConfig">
+              <MappingFragment StoreEntitySet="SearchConfig">
+                <ScalarProperty Name="end_misc" ColumnName="end_misc" />
+                <ScalarProperty Name="end_us" ColumnName="end_us" />
+                <ScalarProperty Name="end_uk" ColumnName="end_uk" />
+                <ScalarProperty Name="end_tv" ColumnName="end_tv" />
+                <ScalarProperty Name="end_su" ColumnName="end_su" />
+                <ScalarProperty Name="end_se" ColumnName="end_se" />
+                <ScalarProperty Name="end_ru" ColumnName="end_ru" />
+                <ScalarProperty Name="end_pl" ColumnName="end_pl" />
+                <ScalarProperty Name="end_org" ColumnName="end_org" />
+                <ScalarProperty Name="end_nu" ColumnName="end_nu" />
+                <ScalarProperty Name="end_nl" ColumnName="end_nl" />
+                <ScalarProperty Name="end_net" ColumnName="end_net" />
+                <ScalarProperty Name="end_mx" ColumnName="end_mx" />
+                <ScalarProperty Name="end_mobi" ColumnName="end_mobi" />
+                <ScalarProperty Name="end_me" ColumnName="end_me" />
+                <ScalarProperty Name="end_it" ColumnName="end_it" />
+                <ScalarProperty Name="end_info" ColumnName="end_info" />
+                <ScalarProperty Name="end_in" ColumnName="end_in" />
+                <ScalarProperty Name="end_ie" ColumnName="end_ie" />
+                <ScalarProperty Name="end_fr" ColumnName="end_fr" />
+                <ScalarProperty Name="end_eu" ColumnName="end_eu" />
+                <ScalarProperty Name="end_de" ColumnName="end_de" />
+                <ScalarProperty Name="end_com" ColumnName="end_com" />
+                <ScalarProperty Name="end_co" ColumnName="end_co" />
+                <ScalarProperty Name="end_ch" ColumnName="end_ch" />
+                <ScalarProperty Name="end_cc" ColumnName="end_cc" />
+                <ScalarProperty Name="end_ca" ColumnName="end_ca" />
+                <ScalarProperty Name="end_biz" ColumnName="end_biz" />
+                <ScalarProperty Name="end_be" ColumnName="end_be" />
+                <ScalarProperty Name="end_au" ColumnName="end_au" />
+                <ScalarProperty Name="end_at" ColumnName="end_at" />
+                <ScalarProperty Name="end_asia" ColumnName="end_asia" />
+                <ScalarProperty Name="RequireSemrushTraffic" ColumnName="RequireSemrushTraffic" />
+                <ScalarProperty Name="Droplists" ColumnName="Droplists" />
+                <ScalarProperty Name="PatternType" ColumnName="PatternType" />
+                <ScalarProperty Name="Pattern" ColumnName="Pattern" />
+                <ScalarProperty Name="KeywordSearchType" ColumnName="KeywordSearchType" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="SearchType" ColumnName="SearchType" />
+                <ScalarProperty Name="SalesTypeOffer" ColumnName="SalesTypeOffer" />
+                <ScalarProperty Name="OnlyDigits" ColumnName="OnlyDigits" />
+                <ScalarProperty Name="AllowDigits" ColumnName="AllowDigits" />
+                <ScalarProperty Name="AllowDash" ColumnName="AllowDash" />
+                <ScalarProperty Name="dmoz" ColumnName="dmoz" />
+                <ScalarProperty Name="GoogleIndex" ColumnName="GoogleIndex" />
+                <ScalarProperty Name="ChildTopCat" ColumnName="ChildTopCat" />
+                <ScalarProperty Name="ParentTopCat" ColumnName="ParentTopCat" />
+                <ScalarProperty Name="ChildCat" ColumnName="ChildCat" />
+                <ScalarProperty Name="ParentCat" ColumnName="ParentCat" />
+                <ScalarProperty Name="EndInUpper" ColumnName="EndInUpper" />
+                <ScalarProperty Name="EndInLower" ColumnName="EndInLower" />
+                <ScalarProperty Name="HideBrand" ColumnName="HideBrand" />
+                <ScalarProperty Name="HideSpammy" ColumnName="HideSpammy" />
+                <ScalarProperty Name="HideAdult" ColumnName="HideAdult" />
+                <ScalarProperty Name="RequireAv" ColumnName="RequireAv" />
+                <ScalarProperty Name="SimilarWebRankReq" ColumnName="SimilarWebRankReq" />
+                <ScalarProperty Name="SemrushRankReq" ColumnName="SemrushRankReq" />
+                <ScalarProperty Name="AlexARankRequired" ColumnName="AlexARankRequired" />
+                <ScalarProperty Name="QuantMillion" ColumnName="QuantMillion" />
+                <ScalarProperty Name="MajMillion" ColumnName="MajMillion" />
+                <ScalarProperty Name="RequireSemrushKey" ColumnName="RequireSemrushKey" />
+                <ScalarProperty Name="FakeAlexa" ColumnName="FakeAlexa" />
+                <ScalarProperty Name="FakePR" ColumnName="FakePR" />
+                <ScalarProperty Name="Sedo" ColumnName="Sedo" />
+                <ScalarProperty Name="SnapName" ColumnName="SnapName" />
+                <ScalarProperty Name="Dynadot" ColumnName="Dynadot" />
+                <ScalarProperty Name="NameJet" ColumnName="NameJet" />
+                <ScalarProperty Name="GoDaddy" ColumnName="GoDaddy" />
+                <ScalarProperty Name="Expired" ColumnName="Expired" />
+                <ScalarProperty Name="PendingDelete" ColumnName="PendingDelete" />
+                <ScalarProperty Name="CloseOut" ColumnName="CloseOut" />
+                <ScalarProperty Name="BarginBin" ColumnName="BarginBin" />
+                <ScalarProperty Name="BuyNow" ColumnName="BuyNow" />
+                <ScalarProperty Name="Auction" ColumnName="Auction" />
+                <ScalarProperty Name="GPlusSharesMax" ColumnName="GPlusSharesMax" />
+                <ScalarProperty Name="GPlusSharesMin" ColumnName="GPlusSharesMin" />
+                <ScalarProperty Name="GPlusShares" ColumnName="GPlusShares" />
+                <ScalarProperty Name="PintrestSharesMax" ColumnName="PintrestSharesMax" />
+                <ScalarProperty Name="PintrestSharesMin" ColumnName="PintrestSharesMin" />
+                <ScalarProperty Name="PintrestShares" ColumnName="PintrestShares" />
+                <ScalarProperty Name="RedditSharesMax" ColumnName="RedditSharesMax" />
+                <ScalarProperty Name="RedditSharesMin" ColumnName="RedditSharesMin" />
+                <ScalarProperty Name="RedditShares" ColumnName="RedditShares" />
+                <ScalarProperty Name="TwitterSharesMax" ColumnName="TwitterSharesMax" />
+                <ScalarProperty Name="TwitterSharesMin" ColumnName="TwitterSharesMin" />
+                <ScalarProperty Name="TwitterShares" ColumnName="TwitterShares" />
+                <ScalarProperty Name="FacebookSharesMax" ColumnName="FacebookSharesMax" />
+                <ScalarProperty Name="FacebookSharesMin" ColumnName="FacebookSharesMin" />
+                <ScalarProperty Name="FacebookLikesMax" ColumnName="FacebookLikesMax" />
+                <ScalarProperty Name="FacebookLikesMin" ColumnName="FacebookLikesMin" />
+                <ScalarProperty Name="DomainPriceMax" ColumnName="DomainPriceMax" />
+                <ScalarProperty Name="DomainPriceMin" ColumnName="DomainPriceMin" />
+                <ScalarProperty Name="DomainPrice" ColumnName="DomainPrice" />
+                <ScalarProperty Name="DomainAgeMax" ColumnName="DomainAgeMax" />
+                <ScalarProperty Name="DomainAgeMin" ColumnName="DomainAgeMin" />
+                <ScalarProperty Name="MajesticIPSMax" ColumnName="MajesticIPSMax" />
+                <ScalarProperty Name="MajesticIPSMin" ColumnName="MajesticIPSMin" />
+                <ScalarProperty Name="MajesticIPS" ColumnName="MajesticIPS" />
+                <ScalarProperty Name="MOZDAMax" ColumnName="MOZDAMax" />
+                <ScalarProperty Name="MOZDAMin" ColumnName="MOZDAMin" />
+                <ScalarProperty Name="MOZDA" ColumnName="MOZDA" />
+                <ScalarProperty Name="MOZPAMax" ColumnName="MOZPAMax" />
+                <ScalarProperty Name="MOZPAMin" ColumnName="MOZPAMin" />
+                <ScalarProperty Name="MOZPA" ColumnName="MOZPA" />
+                <ScalarProperty Name="MajesticCitationFlowMin" ColumnName="MajesticCitationFlowMin" />
+                <ScalarProperty Name="MajesticCitationFlowMax" ColumnName="MajesticCitationFlowMax" />
+                <ScalarProperty Name="MajesticTrustFlowMax" ColumnName="MajesticTrustFlowMax" />
+                <ScalarProperty Name="MajesticTrustFlowMin" ColumnName="MajesticTrustFlowMin" />
+                <ScalarProperty Name="MajesticBacklinksMAX" ColumnName="MajesticBacklinksMAX" />
+                <ScalarProperty Name="MajesticBacklinksMin" ColumnName="MajesticBacklinksMin" />
+                <ScalarProperty Name="PRMax" ColumnName="PRMax" />
+                <ScalarProperty Name="PRMin" ColumnName="PRMin" />
+                <ScalarProperty Name="RequirePR" ColumnName="RequirePR" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemConfig">
+            <EntityTypeMapping TypeName="AuctionSniperModel.SystemConfig">
+              <MappingFragment StoreEntitySet="SystemConfig">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

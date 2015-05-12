@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="LunchboxSource, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Lunchbox\LunchboxCode\LunchboxSource\bin\Release\LunchboxSource.dll</HintPath>
+      <HintPath>..\..\AuctionSniperDLL\AuctionSniperDLL\bin\Debug\LunchboxSource.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

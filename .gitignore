@@ -2,6 +2,7 @@
 
 Bin/
 bin/
-Deubug/
+Debug/
+debug/
 Release/
-*.config
+App.config
