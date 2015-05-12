@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AuctionSniperWnSer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TimeDifference" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="BidTime" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="AuctionSniperWnSer_LunchboxAPI_LunchboxCode_API" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.lunchboxcode.com/service/php/service.php</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
