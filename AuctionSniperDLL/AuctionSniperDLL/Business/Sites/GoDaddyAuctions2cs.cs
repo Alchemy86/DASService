@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity.Migrations;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -30,12 +29,11 @@ namespace AuctionSniperDLL.Business.Sites
 
             var loginUrl = string.Format("https://idp.godaddy.com/login.aspx?SPKey={0}", key);
             var hdoc = HtmlDocument(Get(loginUrl));
-            var capturetext = "";
             if (QuerySelector(hdoc.DocumentNode, "img[class='LBD_CaptchaImage']") != null)
             {
                 //Solve Captcha
 
-                var captchaID =
+                var captchaId =
                      QuerySelector(hdoc.DocumentNode, "input[id='LBD_VCID_idpCatpcha']").Attributes["value"]
                          .Value;
                 var imagedata =
@@ -45,21 +43,28 @@ namespace AuctionSniperDLL.Business.Sites
                 try
                 {
                     imagedata.Save(Path.Combine(Path.GetTempPath(), username + ".jpg"), ImageFormat.Jpeg);
-                    Client client = new SocketClient("a_gibson", "Pa55word1");
-                    var balance = client.GetBalance();
-                    Captcha captcha = client.Decode(Path.Combine(Path.GetTempPath(), username+".jpg"), 20);
+                    Client client;
+                    using (var ds = new ASEntities())
+                    {
+                        var user = ds.SystemConfig.First(x => x.PropertyID == "DBCUser").Value;
+                        var pass = ds.SystemConfig.First(x => x.PropertyID == "DBCPass").Value;
+                        client = new SocketClient(user, pass);
+                    }
+                    
+                    //var balance = client.GetBalance();
+                    var captcha = client.Decode(Path.Combine(Path.GetTempPath(), username+".jpg"), 20);
                     if (null != captcha)
                     {
                         /* The CAPTCHA was solved; captcha.Id property holds its numeric ID,
                            and captcha.Text holds its text. */
-                        Console.WriteLine("CAPTCHA {0} solved: {1}", captcha.Id, captcha.Text);
-                        capturetext = captcha.Text;
+                        Console.WriteLine(@"CAPTCHA {0} solved: {1}", captcha.Id, captcha.Text);
+                        var capturetext = captcha.Text;
 
                         var view = ExtractViewStateSearch(hdoc.DocumentNode.InnerHtml);
                         //var view = QuerySelector(hdoc.DocumentNode, "input[id='__VIEWSTATE'") == null ? "" :
                         //QuerySelector(hdoc.DocumentNode, "input[id='__VIEWSTATE'").Attributes["value"].Value;
                         var postData = string.Format("__VIEWSTATE={0}&Login%24userEntryPanel2%24UsernameTextBox={1}&Login%24userEntryPanel2%24PasswordTextBox={2}&captcha_value={3}&LBD_VCID_idpCatpcha={4}&Login%24userEntryPanel2%24LoginImageButton.x=0&Login%24userEntryPanel2%24LoginImageButton.y=0",
-                            view, username, password, capturetext, captchaID);
+                            view, username, password, capturetext, captchaId);
 
                         responseData = Post(loginUrl, postData);
 

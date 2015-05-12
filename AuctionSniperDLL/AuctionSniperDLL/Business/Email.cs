@@ -1,29 +1,53 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using ASEntityFramework;
 
 namespace AuctionSniperDLL.Business
 {
     public static class Email
-    {
+    {   
+        private static SmtpClient SmtpClient()
+        {
+            SmtpClient client;
+            using (var ds = new ASEntities())
+            {
+                var smtp = ds.SystemConfig.First(x => x.PropertyID == "ServiceEmailSMTP").Value;
+                var port = ds.SystemConfig.First(x => x.PropertyID == "ServiceEmailPort").Value;
+                var user = ds.SystemConfig.First(x => x.PropertyID == "ServiceEmailUser").Value;
+                var password = ds.SystemConfig.First(x => x.PropertyID == "ServiceEmailPass").Value;
+
+                client = new SmtpClient(smtp, int.Parse(port))
+                {
+                    EnableSsl = true,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(user, password)
+                };
+            }
+
+            return client;
+        }
+
         public static void SendEmail(string to,string subject, string message)
         {
             try
             {
-                var mail = new MailMessage("dasservicereport@gmail.com", to);
-                var client = new SmtpClient("smtp.gmail.com", 587)
+                using (var ds = new ASEntities())
                 {
-                    EnableSsl = true,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("dasservicereport@gmail.com", "Pr10r1tyF1x")
-                };
-                mail.Subject = subject;
-                mail.Body = message;
-                client.Send(mail);
+                    var email = ds.SystemConfig.First(x => x.PropertyID == "ServiceEmail").Value;
+                    var mail = new MailMessage(email, to)
+                    {
+                        Subject = subject,
+                        Body = message
+                    };
+
+                    SmtpClient().Send(mail);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(@"Failed to send email");
+                new Error().Add("Failed to send email: " + ex.Message);
             }
 
         }
