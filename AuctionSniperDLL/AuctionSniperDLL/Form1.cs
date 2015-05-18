@@ -20,7 +20,7 @@ namespace AuctionSniperDLL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Email.SendEmail("codebyexample@gmail.com","DAS Service Monitor","Testing Dude");
+            //Email.SendEmail(AppConfig.GetSystemConfig("AlertEmail"),"DAS Service Monitor","Testing Dude");
         }
     }
 }

@@ -79,7 +79,7 @@ namespace AuctionSniperDLL.Business.Sites
                 catch(Exception e)
                 {
                     new Error().Add(e.Message);
-                    //Email.SendEmail("codebyexample@gmail.com","Captcha Failure",e.Message);
+                    //Email.SendEmail(AppConfig.GetSystemConfig("AlertEmail"),"Captcha Failure",e.Message);
                     CaptchaOverload = true;
                 }
             }
