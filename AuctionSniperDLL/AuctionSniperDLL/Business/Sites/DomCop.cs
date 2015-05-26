@@ -264,7 +264,6 @@ namespace AuctionSniperDLL.Business.Sites
                 }
                 
                 //json["aaData"][0]["1"]
-                var bush = "";
             }
         }
 

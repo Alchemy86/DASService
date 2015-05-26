@@ -100,6 +100,11 @@ namespace AuctionSniperDLL.Business.Sites
             return false;
         }
 
+        public bool LoggedIn()
+        {
+            var response = Get("https://auctions.godaddy.com");
+            return response.Contains("sessionTimeout_onLogout");
+        }
 
         private AuctionSearch GenerateAuctionSearch()
         {
