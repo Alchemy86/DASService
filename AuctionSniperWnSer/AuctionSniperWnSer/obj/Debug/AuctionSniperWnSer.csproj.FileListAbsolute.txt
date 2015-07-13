@@ -72,6 +72,4 @@ C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Debug\ASEntityFramew
 C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Debug\AuctionSniperDLL.pdb
 C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Debug\EntityFramework.xml
 C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Debug\EntityFramework.SqlServer.xml
-C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Debug\LunchboxSource.pdb
-C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Debug\LunchboxSource.XmlSerializers.dll
 C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\obj\Debug\AuctionSniperWnSer.pdb

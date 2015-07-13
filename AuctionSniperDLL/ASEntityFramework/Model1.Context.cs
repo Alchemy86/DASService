@@ -41,6 +41,9 @@ namespace ASEntityFramework
         public DbSet<AdvSearch> AdvSearch { get; set; }
         public DbSet<SearchConfig> SearchConfig { get; set; }
         public DbSet<SystemConfig> SystemConfig { get; set; }
+        public DbSet<Chart_AuctionHistory> Chart_AuctionHistory { get; set; }
+        public DbSet<Chart_AuctionsEnding> Chart_AuctionsEnding { get; set; }
+        public DbSet<Chart_PopularDomainsThisMonth> Chart_PopularDomainsThisMonth { get; set; }
     
         public virtual int USP_SearchQueryBuilder2(string userID)
         {

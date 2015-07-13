@@ -289,8 +289,49 @@ warning 6002: The table/view 'AuctionSniper.dbo.AuctionHistoryView' does not hav
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="AuctionLink" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AuctionSniper.dbo.Chart_AuctionHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Chart_AuctionHistory">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TotalAuctions" Type="int" />
+          <Property Name="AuctionsThisMonth" Type="int" />
+          <Property Name="AuctionsWonTotal" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AuctionSniper.dbo.Chart_AuctionsEnding' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Chart_AuctionsEnding">
+          <Key>
+            <PropertyRef Name="AuctionRef" />
+            <PropertyRef Name="DomainName" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="MinBid" />
+          </Key>
+          <Property Name="AuctionRef" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MyBid" Type="int" />
+          <Property Name="MinBid" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Chart_PopularDomainsThisMonth">
+          <Key>
+            <PropertyRef Name="AuctionRef" />
+            <PropertyRef Name="DomainName" />
+          </Key>
+          <Property Name="AuctionRef" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Bids" Type="int" />
+        </EntityType>
         <Association Name="FK_Auctions_GoDaddyAccount">
-          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="1" />
+          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Auctions" Type="Self.Auctions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GoDaddyAccount">
@@ -302,7 +343,9 @@ warning 6002: The table/view 'AuctionSniper.dbo.AuctionHistoryView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Auctions_GoDaddyAccount2">
-          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="1" />
+          <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="AuctionSearch" Type="Self.AuctionSearch" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GoDaddyAccount">
@@ -314,7 +357,9 @@ warning 6002: The table/view 'AuctionSniper.dbo.AuctionHistoryView' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoDaddyAccount_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="GoDaddyAccount" Type="Self.GoDaddyAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -351,6 +396,31 @@ warning 6002: The table/view 'AuctionSniper.dbo.AuctionHistoryView' does not hav
 [AuctionHistoryView].[CreatedDate] AS [CreatedDate], 
 [AuctionHistoryView].[AuctionLink] AS [AuctionLink]
 FROM [dbo].[AuctionHistoryView] AS [AuctionHistoryView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Chart_AuctionHistory" EntityType="Self.Chart_AuctionHistory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Chart_AuctionHistory].[Username] AS [Username], 
+[Chart_AuctionHistory].[TotalAuctions] AS [TotalAuctions], 
+[Chart_AuctionHistory].[AuctionsThisMonth] AS [AuctionsThisMonth], 
+[Chart_AuctionHistory].[AuctionsWonTotal] AS [AuctionsWonTotal]
+FROM [dbo].[Chart_AuctionHistory] AS [Chart_AuctionHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Chart_AuctionsEnding" EntityType="Self.Chart_AuctionsEnding" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Chart_AuctionsEnding].[AuctionRef] AS [AuctionRef], 
+[Chart_AuctionsEnding].[DomainName] AS [DomainName], 
+[Chart_AuctionsEnding].[EndDate] AS [EndDate], 
+[Chart_AuctionsEnding].[Username] AS [Username], 
+[Chart_AuctionsEnding].[MyBid] AS [MyBid], 
+[Chart_AuctionsEnding].[MinBid] AS [MinBid]
+FROM [dbo].[Chart_AuctionsEnding] AS [Chart_AuctionsEnding]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Chart_PopularDomainsThisMonth" EntityType="Self.Chart_PopularDomainsThisMonth" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Chart_PopularDomainsThisMonth].[AuctionRef] AS [AuctionRef], 
+[Chart_PopularDomainsThisMonth].[DomainName] AS [DomainName], 
+[Chart_PopularDomainsThisMonth].[Bids] AS [Bids]
+FROM [dbo].[Chart_PopularDomainsThisMonth] AS [Chart_PopularDomainsThisMonth]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Auctions_GoDaddyAccount" Association="Self.FK_Auctions_GoDaddyAccount">
             <End Role="GoDaddyAccount" EntitySet="GoDaddyAccount" />
@@ -398,6 +468,9 @@ FROM [dbo].[AuctionHistoryView] AS [AuctionHistoryView]</DefiningQuery>
           <EntitySet Name="AdvSearch" EntityType="AuctionSniperModel.AdvSearch" />
           <EntitySet Name="SearchConfig" EntityType="AuctionSniperModel.SearchConfig" />
           <EntitySet Name="SystemConfig" EntityType="AuctionSniperModel.SystemConfig" />
+          <EntitySet Name="Chart_AuctionHistory" EntityType="AuctionSniperModel.Chart_AuctionHistory" />
+          <EntitySet Name="Chart_AuctionsEnding" EntityType="AuctionSniperModel.Chart_AuctionsEnding" />
+          <EntitySet Name="Chart_PopularDomainsThisMonth" EntityType="AuctionSniperModel.Chart_PopularDomainsThisMonth" />
         </EntityContainer>
         <EntityType Name="GoDaddyAccount">
           <Key>
@@ -723,6 +796,39 @@ FROM [dbo].[AuctionHistoryView] AS [AuctionHistoryView]</DefiningQuery>
           <Property Name="Value" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Chart_AuctionHistory">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TotalAuctions" Type="Int32" />
+          <Property Name="AuctionsThisMonth" Type="Int32" />
+          <Property Name="AuctionsWonTotal" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Chart_AuctionsEnding">
+          <Key>
+            <PropertyRef Name="AuctionRef" />
+            <PropertyRef Name="DomainName" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="MinBid" />
+          </Key>
+          <Property Name="AuctionRef" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DomainName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MyBid" Type="Int32" />
+          <Property Name="MinBid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chart_PopularDomainsThisMonth">
+          <Key>
+            <PropertyRef Name="AuctionRef" />
+            <PropertyRef Name="DomainName" />
+          </Key>
+          <Property Name="AuctionRef" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DomainName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Bids" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1019,6 +1125,37 @@ FROM [dbo].[AuctionHistoryView] AS [AuctionHistoryView]</DefiningQuery>
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chart_AuctionHistory">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Chart_AuctionHistory">
+              <MappingFragment StoreEntitySet="Chart_AuctionHistory">
+                <ScalarProperty Name="AuctionsWonTotal" ColumnName="AuctionsWonTotal" />
+                <ScalarProperty Name="AuctionsThisMonth" ColumnName="AuctionsThisMonth" />
+                <ScalarProperty Name="TotalAuctions" ColumnName="TotalAuctions" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chart_AuctionsEnding">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Chart_AuctionsEnding">
+              <MappingFragment StoreEntitySet="Chart_AuctionsEnding">
+                <ScalarProperty Name="MinBid" ColumnName="MinBid" />
+                <ScalarProperty Name="MyBid" ColumnName="MyBid" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="AuctionRef" ColumnName="AuctionRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chart_PopularDomainsThisMonth">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Chart_PopularDomainsThisMonth">
+              <MappingFragment StoreEntitySet="Chart_PopularDomainsThisMonth">
+                <ScalarProperty Name="Bids" ColumnName="Bids" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="AuctionRef" ColumnName="AuctionRef" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

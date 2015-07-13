@@ -30,8 +30,18 @@ namespace AuctionSniperWnSer
 
         protected override void OnStart(string[] args)
         {
-            Email.SendEmail("codebyexample@gmail.com", "ServiceStarted", "Started the service");
-            Console.WriteLine(@"Service Started");
+            try
+            {
+                Email.SendEmail("codebyexample@gmail.com", "ServiceStarted", "Started the service");
+                Console.WriteLine(@"Service Started");
+                CheckDB();
+                Email.SendEmail("codebyexample@gmail.com", "ServiceTested", "Successfull test");
+            }
+            catch (Exception ex)
+            {
+                Email.SendEmail("codebyexample@gmail.com", "ServiceTested", "failed test: " + ex.Message);
+            }
+            
             var th1 = new Thread(() =>
             {
                 CheckTimer = new Timer(10000); // Run every 10 sec
@@ -120,7 +130,8 @@ namespace AuctionSniperWnSer
                     if (ts.TotalSeconds < Convert.ToInt32(Properties.Settings.Default.BidTime))
                     {
                         try
-                        {
+                        { 
+
                             alert.Processed = true;
                             ds.Alerts.AddOrUpdate(alert);
                             ds.SaveChanges();
