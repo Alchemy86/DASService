@@ -358,7 +358,7 @@ namespace AuctionSniperWnSer
                                 }
                                 catch (Exception e)
                                 {
-                                    //code
+                                    EventLog.
                                     SendErrorReport(e);
                                 }
                                 
