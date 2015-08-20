@@ -28,6 +28,21 @@ namespace AuctionSniperWnSer
             OnStart(null);
         }
 
+        /// <summary>
+        /// Returns the Pacific time
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetPacificTime
+        {
+            get
+            {
+                var tzi = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+                var localDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tzi);
+
+                return localDateTime;
+            }
+        }
+
         protected override void OnStart(string[] args)
         {
             try
@@ -126,7 +141,7 @@ namespace AuctionSniperWnSer
                 foreach (var alert in alertsToProcess)
                 {
                     var ts =
-                        alert.TriggerTime.Subtract(DateTime.Now);
+                        alert.TriggerTime.Subtract(GetPacificTime);
                     if (ts.TotalSeconds < Convert.ToInt32(Properties.Settings.Default.BidTime))
                     {
                         try
@@ -156,13 +171,13 @@ namespace AuctionSniperWnSer
                                 gd.Login(account.GoDaddyUsername, account.GoDaddyPassword);
                                 if (gd.WinCheck(account.DomainName))
                                 {
-                                    if (DateTime.Now > alert1.TriggerTime.AddHours(4))
+                                    if (GetPacificTime > alert1.TriggerTime.AddHours(4))
                                     {
                                         var item = new AuctionHistory
                                         {
                                             HistoryID = Guid.NewGuid(),
                                             Text = "Auction Check (Delayed)",
-                                            CreatedDate = DateTime.Now,
+                                            CreatedDate = GetPacificTime,
                                             AuctionLink = alert1.AuctionID
                                         };
                                         ds.AuctionHistory.Add(item);
@@ -170,7 +185,7 @@ namespace AuctionSniperWnSer
                                         {
                                             HistoryID = Guid.NewGuid(),
                                             Text = "Auction WON",
-                                            CreatedDate = DateTime.Now,
+                                            CreatedDate = GetPacificTime,
                                             AuctionLink = alert1.AuctionID
                                         };
                                         ds.AuctionHistory.Add(item);
@@ -182,7 +197,7 @@ namespace AuctionSniperWnSer
                                         {
                                             HistoryID = Guid.NewGuid(),
                                             Text = "Auction WON",
-                                            CreatedDate = DateTime.Now,
+                                            CreatedDate = GetPacificTime,
                                             AuctionLink = alert1.AuctionID
                                         };
                                         ds.AuctionHistory.Add(item);
@@ -192,13 +207,13 @@ namespace AuctionSniperWnSer
                                 }
                                 else
                                 {
-                                    if (DateTime.Now > alert1.TriggerTime.AddHours(4))
+                                    if (GetPacificTime > alert1.TriggerTime.AddHours(4))
                                     {
                                         var item = new AuctionHistory
                                         {
                                             HistoryID = Guid.NewGuid(),
                                             Text = "Auction Check (Delayed)",
-                                            CreatedDate = DateTime.Now,
+                                            CreatedDate = GetPacificTime,
                                             AuctionLink = alert1.AuctionID
                                         };
                                         ds.AuctionHistory.Add(item);
@@ -206,7 +221,7 @@ namespace AuctionSniperWnSer
                                         {
                                             HistoryID = Guid.NewGuid(),
                                             Text = "Auction LOST",
-                                            CreatedDate = DateTime.Now,
+                                            CreatedDate = GetPacificTime,
                                             AuctionLink = alert1.AuctionID
                                         };
                                         ds.AuctionHistory.Add(item);
@@ -218,7 +233,7 @@ namespace AuctionSniperWnSer
                                         {
                                             HistoryID = Guid.NewGuid(),
                                             Text = "Auction LOST",
-                                            CreatedDate = DateTime.Now,
+                                            CreatedDate = GetPacificTime,
                                             AuctionLink = alert1.AuctionID
                                         };
 
@@ -238,7 +253,7 @@ namespace AuctionSniperWnSer
                                             {
                                                 HistoryID = Guid.NewGuid(),
                                                 Text = "Bid Reminder Email Sent",
-                                                CreatedDate = DateTime.Now,
+                                                CreatedDate = GetPacificTime,
                                                 AuctionLink = alert1.AuctionID
                                             };
 
@@ -261,7 +276,7 @@ namespace AuctionSniperWnSer
                                             {
                                                 HistoryID = Guid.NewGuid(),
                                                 Text = "Alerted - Auction will be lost",
-                                                CreatedDate = DateTime.Now,
+                                                CreatedDate = GetPacificTime,
                                                 AuctionLink = alert1.AuctionID
                                             };
 
@@ -280,7 +295,7 @@ namespace AuctionSniperWnSer
                                             {
                                                 HistoryID = Guid.NewGuid(),
                                                 Text = "Auction will be lost - Email warning is disabled",
-                                                CreatedDate = DateTime.Now,
+                                                CreatedDate = GetPacificTime,
                                                 AuctionLink = alert1.AuctionID
                                             };
 
@@ -318,12 +333,12 @@ namespace AuctionSniperWnSer
             using (var ds = new ASEntities())
             {
                 CheckTimer.Stop();
-                var tomorrow = DateTime.Now.AddDays(1);
+                var tomorrow = GetPacificTime.AddDays(1);
                 var auctionsToProcess = ds.Auctions.Where(x => x.Processed == false && x.EndDate <= tomorrow).ToList();
                 foreach (var auction in auctionsToProcess)
                 {
                     var ts =
-                        auction.EndDate.Subtract(DateTime.Now);
+                        auction.EndDate.Subtract(GetPacificTime);
                     if (ts.TotalSeconds < Convert.ToInt32(Properties.Settings.Default.BidTime) &&
                         (auction.MinBid < auction.MyBid || auction.MinBid == auction.MyBid) && ts.TotalSeconds > 0)
                     {
@@ -337,7 +352,7 @@ namespace AuctionSniperWnSer
                             {
                                 HistoryID = Guid.NewGuid(),
                                 Text = "Bid Process Started",
-                                CreatedDate = DateTime.Now,
+                                CreatedDate = GetPacificTime,
                                 AuctionLink = auction.AuctionID
                             };
 
@@ -358,7 +373,6 @@ namespace AuctionSniperWnSer
                                 }
                                 catch (Exception e)
                                 {
-                                    EventLog.
                                     SendErrorReport(e);
                                 }
                                 

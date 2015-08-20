@@ -140,7 +140,7 @@ namespace AuctionSniperDLL.Business.Sites
                 {
                     if (auction.EndDate != end)
                     {
-                        new Error().Add("Checked at: " + DateTime.Now + "\r\nEnd date found to be different: " + end + "\r\n" + "Old date was: " + auction.EndDate, "Date Change Value");
+                        new Error().Add("Checked at: " + GetPacificTime + "\r\nEnd date found to be different: " + end + "\r\n" + "Old date was: " + auction.EndDate, "Date Change Value");
                         //auction.EndDate = end;
                         //ds.Auctions.AddOrUpdate(auction);
                         //ds.SaveChanges();
@@ -161,9 +161,23 @@ namespace AuctionSniperDLL.Business.Sites
             return hdoc;
         }
 
+        /// <summary>
+        /// Returns the Pacific time
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetPacificTime
+        {
+            get{ 
+                var tzi = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+                var localDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tzi);
+
+                return localDateTime;
+            }
+        }
+
         public DateTime GetEndDate(string auctionNo)
         {
-            var endDate = DateTime.Now.AddHours(decimal.ToInt32(Timediff));
+            var endDate = GetPacificTime;
             var details = GetAuctionDetails(auctionNo);
             if (QuerySelector(details.DocumentNode, "span.OneLinkNoTx") != null)
             {
@@ -248,7 +262,7 @@ namespace AuctionSniperDLL.Business.Sites
                                 auction.MinOffer = TryParse_INT(item.Replace(",", ""));
                             }
                         }
-                        auction.EndDate = DateTime.Now.AddHours(Timediff);
+                        auction.EndDate = GetPacificTime;
                         foreach (var item in GetSubStrings(node.InnerHtml, "ShowAuctionDetails('", "',"))
                         {
                             auction.AuctionRef = item;
@@ -285,7 +299,7 @@ namespace AuctionSniperDLL.Business.Sites
                 {
                     HistoryID = Guid.NewGuid(),
                     Text = "Logging In",
-                    CreatedDate = DateTime.Now,
+                    CreatedDate = GetPacificTime,
                     AuctionLink = auction.AuctionID
                 };
 
@@ -305,7 +319,7 @@ namespace AuctionSniperDLL.Business.Sites
                     {
                         HistoryID = Guid.NewGuid(),
                         Text = "Setting Max Bid: " + auction.MyBid,
-                        CreatedDate = DateTime.Now,
+                        CreatedDate = GetPacificTime,
                         AuctionLink = auction.AuctionID
                     };
 
@@ -326,7 +340,7 @@ namespace AuctionSniperDLL.Business.Sites
                         {
                             HistoryID = Guid.NewGuid(),
                             Text = "Bid Process Ended - Your max bid is already too small to place",
-                            CreatedDate = DateTime.Now,
+                            CreatedDate = GetPacificTime,
                             AuctionLink = auction.AuctionID
                         };
 
@@ -371,7 +385,7 @@ namespace AuctionSniperDLL.Business.Sites
                     {
                         HistoryID = Guid.NewGuid(),
                         Text = "Bid Process Completed",
-                        CreatedDate = DateTime.Now,
+                        CreatedDate = GetPacificTime,
                         AuctionLink = auction.AuctionID
                     };
 
@@ -391,7 +405,7 @@ namespace AuctionSniperDLL.Business.Sites
                             {
                                 HistoryID = Guid.NewGuid(),
                                 Text = "Bid Confirmed - You are the high bidder!",
-                                CreatedDate = DateTime.Now,
+                                CreatedDate = GetPacificTime,
                                 AuctionLink = auction.AuctionID
                             };
 
@@ -409,7 +423,7 @@ namespace AuctionSniperDLL.Business.Sites
                             {
                                 HistoryID = Guid.NewGuid(),
                                 Text = "Bid Failed - The site is no longer an auction",
-                                CreatedDate = DateTime.Now,
+                                CreatedDate = GetPacificTime,
                                 AuctionLink = auction.AuctionID
                             };
 
@@ -437,7 +451,7 @@ namespace AuctionSniperDLL.Business.Sites
                         {
                             HistoryID = Guid.NewGuid(),
                             Text = "Bid Not Confirmed - Data logged",
-                            CreatedDate = DateTime.Now,
+                            CreatedDate = GetPacificTime,
                             AuctionLink = auction.AuctionID
                         };
 
@@ -456,7 +470,7 @@ namespace AuctionSniperDLL.Business.Sites
                         {
                             HistoryID = Guid.NewGuid(),
                             Text = "Appologies - 3rd party capture solve failure. This has been reported.",
-                            CreatedDate = DateTime.Now,
+                            CreatedDate = GetPacificTime,
                             AuctionLink = auction.AuctionID
                         };
 
@@ -468,7 +482,7 @@ namespace AuctionSniperDLL.Business.Sites
                         {
                             HistoryID = Guid.NewGuid(),
                             Text = "Appologies - Login to account has failed. 3 Seperate attempts made",
-                            CreatedDate = DateTime.Now,
+                            CreatedDate = GetPacificTime,
                             AuctionLink = auction.AuctionID
                         };
 
@@ -511,7 +525,7 @@ namespace AuctionSniperDLL.Business.Sites
 
         private DateTime GenerateEstimateEnd(HtmlNode node)
         {
-            var estimateEnd = DateTime.Now.AddHours(Timediff);
+            var estimateEnd = GetPacificTime;
             if (node.InnerText != null)
             {
                 var vals = HTMLDecode(node.InnerText).Trim().Split(new [] { ' ' });
