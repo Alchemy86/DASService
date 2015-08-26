@@ -29,7 +29,7 @@ namespace AuctionSniperDLL.Business
             return client;
         }
 
-        public static void SendEmail(string to,string subject, string message)
+        public static void SendEmail(string to,string subject, string message, DateTime TimeStamp)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace AuctionSniperDLL.Business
                     var mail = new MailMessage(email, to)
                     {
                         Subject = subject,
-                        Body = message
+                        Body = message + Environment.NewLine + TimeStamp.ToString("dd/M/yyyy H:mm:ss")
                     };
 
                     SmtpClient().Send(mail);

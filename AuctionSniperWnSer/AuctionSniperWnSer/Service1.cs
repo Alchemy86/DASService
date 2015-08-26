@@ -47,14 +47,15 @@ namespace AuctionSniperWnSer
         {
             try
             {
-                Email.SendEmail("codebyexample@gmail.com", "ServiceStarted", "Started the service");
+                Email.SendEmail("codebyexample@gmail.com", "ServiceStarted", "Started Azure service", GetPacificTime);
                 Console.WriteLine(@"Service Started");
+                CheckTimer = new Timer(10000); // Run every 10 sec
                 CheckDB();
-                Email.SendEmail("codebyexample@gmail.com", "ServiceTested", "Successfull test");
+                Email.SendEmail("codebyexample@gmail.com", "ServiceTested", "Successfull test", GetPacificTime);
             }
             catch (Exception ex)
             {
-                Email.SendEmail("codebyexample@gmail.com", "ServiceTested", "failed test: " + ex.Message);
+                Email.SendEmail("codebyexample@gmail.com", "ServiceTested", "failed test: " + ex.Message, GetPacificTime);
             }
             
             var th1 = new Thread(() =>
@@ -101,9 +102,9 @@ namespace AuctionSniperWnSer
                           ex.StackTrace + Environment.NewLine;
                 message += ex.InnerException.Message;
                 new Error().Add(message);
-                Email.SendEmail("codebyexample@gmail.com", "Service Error - Alerts",
+                Email.SendEmail("codebyexample@gmail.com", "Azure Service Error - Alerts",
                         ex.Message + Environment.NewLine +
-                        ex.StackTrace + Environment.NewLine);
+                        ex.StackTrace + Environment.NewLine, GetPacificTime);
             }
             catch (Exception)
             {
@@ -323,7 +324,7 @@ namespace AuctionSniperWnSer
 
         protected override void OnStop()
         {
-            Email.SendEmail("codebyexample@gmail.com", "Service Stopped", "Stopped the service");
+            Email.SendEmail("codebyexample@gmail.com", "Azure Service Stopped", "Stopped the service", GetPacificTime);
             Console.WriteLine(@"Service Stopped");
         }
 
@@ -368,15 +369,13 @@ namespace AuctionSniperWnSer
                                 {
                                     var gd = new GoDaddyAuctions2Cs();
                                     gd.PlaceBid(account, auction1);
-                                    Email.SendEmail("codebyexample@gmail.com", "Placing a bid", "Account: " + account.GoDaddyUsername + Environment.NewLine +
-                                    "Site: " + auction2.DomainName);
+                                    Email.SendEmail("codebyexample@gmail.com", "Azure: Placing a bid", "Account: " + account.GoDaddyUsername + Environment.NewLine +
+                                    "Site: " + auction2.DomainName, GetPacificTime);
                                 }
                                 catch (Exception e)
                                 {
                                     SendErrorReport(e);
                                 }
-                                
-
                             });
                             th.SetApartmentState(ApartmentState.STA);
                             th.IsBackground = true;

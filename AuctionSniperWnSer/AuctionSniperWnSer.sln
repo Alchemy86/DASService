@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionSniperWnSer", "AuctionSniperWnSer\AuctionSniperWnSer.csproj", "{985B2898-1356-4F74-805C-DC0865799F50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionSniperDLL", "..\AuctionSniperDLL\AuctionSniperDLL\AuctionSniperDLL.csproj", "{99972A52-4922-4DC6-A51C-3302B493E807}"

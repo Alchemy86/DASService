@@ -86,10 +86,16 @@ namespace AuctionSniperDLL.Business.Sites
             else
             {
                 var postData = string.Format("loginName={0}&password={1}", username, password);
-
+                //Login form auto resubmit data
                 responseData = Post(loginUrl, postData);
 
-                return responseData.Contains("sessionTimeout_onLogout");
+                var action = GetSubString(responseData, "action='", "'");
+                var user = UrlEncode(username);
+                var pass = UrlEncode(password);
+
+                var nextResponse = Post(action, string.Format("name={0}&password={1}", user, pass));
+
+                return nextResponse.Contains("sessionTimeout_onLogout");
             }
 
             if (attempNo < 3)
