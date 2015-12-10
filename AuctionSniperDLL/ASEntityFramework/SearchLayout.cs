@@ -18,5 +18,6 @@ namespace ASEntityFramework
         public string SearchValue { get; set; }
         public string FieldName { get; set; }
         public int Order { get; set; }
+        public string ControlType { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace ASEntityFramework
         public string Password { get; set; }
         public bool ReceiveEmails { get; set; }
         public int AccessLevel { get; set; }
+        public bool UseAccountForSearch { get; set; }
     
         public virtual ICollection<GoDaddyAccount> GoDaddyAccount { get; set; }
     }
