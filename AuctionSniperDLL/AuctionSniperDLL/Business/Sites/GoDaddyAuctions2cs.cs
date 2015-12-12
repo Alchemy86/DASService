@@ -120,7 +120,7 @@ namespace AuctionSniperDLL.Business.Sites
 
         public bool WinCheck(string domainName)
         {
-            const string url = "https://au.auctions.godaddy.com/trpMessageHandler.aspx?isc=cjcdplink";
+            const string url = "https://auctions.godaddy.com/trpMessageHandler.aspx";
             //var postData = string.Format("sec=Wo&sort=6&dir=D&page=1&rpp=50&at=0&rnd={0}", RandomDouble(0, 1).ToString("0.00000000000000000"));
             var postData = string.Format("sec=Wo&sort=6&dir=D&page=1&rpp=50&at=0&maadv=0|{0}|||&rnd={1}", domainName, RandomDouble(0, 1).ToString("0.00000000000000000"));
             var data = Post(url, postData);
