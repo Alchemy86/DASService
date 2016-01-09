@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeathbyCapture\DeathByCaptureDetails.cs" />
+    <Compile Include="Enum\EnumExten.cs" />
+    <Compile Include="GoDaddy\Alerts\Alert.cs" />
+    <Compile Include="GoDaddy\Alerts\IAlert.cs" />
     <Compile Include="GoDaddy\Users\GoDaddyAccount.cs" />
     <Compile Include="GoDaddy\Users\GoDaddySession.cs" />
     <Compile Include="GoDaddy\Users\IGoDaddySession.cs" />

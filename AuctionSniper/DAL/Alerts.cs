@@ -22,5 +22,8 @@ namespace DAL
         public Guid AuctionID { get; set; }
 
         public bool Custom { get; set; }
+
+        [MaxLength(50)]
+        public string AlertType { get; set; }
     }
 }

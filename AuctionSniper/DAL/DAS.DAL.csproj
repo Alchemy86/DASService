@@ -62,12 +62,17 @@
     <Compile Include="Chart_PopularDomainsThisMonth.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EventLog.cs" />
+    <Compile Include="Exten\Alerts.cs" />
     <Compile Include="Exten\ASEntities.cs" />
     <Compile Include="Exten\GoDaddyAccount.cs" />
     <Compile Include="GoDaddyAccount.cs" />
     <Compile Include="Migrations\201601082324074_InitialCreate.cs" />
     <Compile Include="Migrations\201601082324074_InitialCreate.Designer.cs">
       <DependentUpon>201601082324074_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601091102451_AlertTypes.cs" />
+    <Compile Include="Migrations\201601091102451_AlertTypes.Designer.cs">
+      <DependentUpon>201601091102451_AlertTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ASEntities.cs" />
@@ -87,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601082324074_InitialCreate.resx">
       <DependentUpon>201601082324074_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601091102451_AlertTypes.resx">
+      <DependentUpon>201601091102451_AlertTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
