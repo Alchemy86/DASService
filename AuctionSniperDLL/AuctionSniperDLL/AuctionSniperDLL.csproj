@@ -83,6 +83,7 @@
     <Compile Include="Business\Sites\DomCop.cs" />
     <Compile Include="Business\Sites\GoDaddyAuctions.cs" />
     <Compile Include="Business\Sites\GoDaddyAuctions2cs.cs" />
+    <Compile Include="Business\Sites\GoDaddyAuctions3.cs" />
     <Compile Include="Business\Sites\Site.cs" />
     <Compile Include="Business\SortableBindingList.cs" />
     <Compile Include="Error.cs" />
