@@ -4,6 +4,7 @@ using DAL.Repositories;
 using DAS.Domain;
 using DAS.Domain.GoDaddy.Users;
 using DAS.Domain.Users;
+using Lunchboxweb.BaseFunctions;
 using Moq;
 using Ninject.Modules;
 using GoDaddyAccount = DAS.Domain.GoDaddy.Users.GoDaddyAccount;
@@ -28,6 +29,8 @@ namespace ApplicationTest
             Bind<IGoDaddySession>().ToConstant(mockObject.Object);
             Bind<IUserRepository>().To<UserRepository>();
             Bind<IUnitOfWork>().To<ASEntities>();
+            Bind<ITextManipulation>().To<TextManipulation>();
+            Bind<ISystemRepository>().To<SystemRepository>();
         }
     }
 }

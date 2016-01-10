@@ -26,14 +26,49 @@ namespace DAL.Repositories
             };
         }
 
-        public GoDaddySession GetSessionDetails(string username)
+        public GoDaddySessionModel GetSessionDetails(string username)
         {
             var details = Context.Users.Include("GoDaddyAccount").FirstOrDefault(x => x.Username == username);
             if (details == null) return null;
             var gdAccount = details.GoDaddyAccount.FirstOrDefault() != null
                 ? details.GoDaddyAccount.First().ToDomainObject()
                 : null;
-            return new GoDaddySession(details.Username, details.Password, gdAccount, GetDeathByCaptureDetailsDetails());
+            return new GoDaddySessionModel(details.Username, details.Password, gdAccount, GetDeathByCaptureDetailsDetails());
         }
+
+        /// <summary>
+        /// Add an error to the database
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="type"></param>
+        public virtual void LogError(string message, string type = "Error")
+        {
+            Context.EventLog.Add(new EventLog
+            {
+                CreatedDate = DateTime.Now,
+                Event = type,
+                Message = message
+            });
+            Context.Save();
+        }
+
+
+        /// <summary>
+        /// Adds a histroy record
+        /// </summary>
+        /// <param name="message">History record message</param>
+        /// <param name="auctionLink">auction to link to</param>
+        public void AddHistoryRecord(string message, Guid auctionLink)
+        {
+            Context.AuctionHistory.Add(new AuctionHistory
+            {
+                AuctionLink = auctionLink,
+                CreatedDate = Global.GetPacificTime,
+                HistoryID = Guid.NewGuid(),
+                Text = message
+            });
+            Context.Save();
+        }
+
     }
 }

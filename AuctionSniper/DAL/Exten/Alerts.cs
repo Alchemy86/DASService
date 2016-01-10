@@ -12,23 +12,24 @@ namespace DAL
             return new Alert()
             {
                 AlertId = AlertID,
-                AuctionId = AuctionID,
                 Custom = Custom,
                 Processed = Processed,
                 TriggerTime = TriggerTime,
-                Type = (AlertType)Enum.Parse(typeof(AlertType), AlertType)
+                Type = (AlertType)Enum.Parse(typeof(AlertType), AlertType),
+                AuctionId = AuctionID,
+                Auction = Auction.ToDomainObject()
             };
         }
 
         public void FromDomainObject(Alert alert)
         {
             AlertID = alert.AlertId;
-            AuctionID = alert.AuctionId;
             Custom = alert.Custom;
             Processed = alert.Processed;
             TriggerTime = alert.TriggerTime;
             AlertType = alert.Type.ToName();
             Description = alert.Description;
+            AuctionID = alert.AuctionId;
         }
     }
 }

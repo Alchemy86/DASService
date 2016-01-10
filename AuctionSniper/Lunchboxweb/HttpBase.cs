@@ -24,14 +24,13 @@ namespace Lunchboxweb
         private readonly UTF8Encoding _utf8Encoding;
         private int _timeout = 8000;
 
-        [Inject]
-        // ReSharper disable once UnusedAutoPropertyAccessor.Local
-        public ITextManipulation TextModifier { get; private set; }
+        public TextManipulation TextModifier { get; private set; }
 
         public HttpBase()
         {
             CookieContainer = new CookieContainer();
             _utf8Encoding = new UTF8Encoding();
+            TextModifier = new TextManipulation();
 
             UseFixedBrowser = false;
             SetSaveCookies = true;

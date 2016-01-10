@@ -64,6 +64,7 @@
     <Compile Include="EventLog.cs" />
     <Compile Include="Exten\Alerts.cs" />
     <Compile Include="Exten\ASEntities.cs" />
+    <Compile Include="Exten\Auctions.cs" />
     <Compile Include="Exten\GoDaddyAccount.cs" />
     <Compile Include="GoDaddyAccount.cs" />
     <Compile Include="Migrations\201601082324074_InitialCreate.cs" />
@@ -74,10 +75,15 @@
     <Compile Include="Migrations\201601091102451_AlertTypes.Designer.cs">
       <DependentUpon>201601091102451_AlertTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601100101208_Alerts.cs" />
+    <Compile Include="Migrations\201601100101208_Alerts.Designer.cs">
+      <DependentUpon>201601100101208_Alerts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ASEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\SystemRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="SearchConfig.cs" />
     <Compile Include="SearchLayout.cs" />
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601091102451_AlertTypes.resx">
       <DependentUpon>201601091102451_AlertTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601100101208_Alerts.resx">
+      <DependentUpon>201601100101208_Alerts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

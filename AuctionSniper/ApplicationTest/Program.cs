@@ -18,7 +18,7 @@ namespace ApplicationTest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             IKernel kernel = new StandardKernel(new Bindings());
-            Application.Run(kernel.Get<Form1>());
+            Application.Run(new Form1(kernel));
         }
     }
 }

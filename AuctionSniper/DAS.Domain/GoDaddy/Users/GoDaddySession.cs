@@ -2,9 +2,9 @@
 
 namespace DAS.Domain.GoDaddy.Users
 {
-    public class GoDaddySession : IGoDaddySession
+    public class GoDaddySessionModel : IGoDaddySession
     {
-        public GoDaddySession(string username, string password, GoDaddyAccount goDaddyAccount, DeathByCaptureDetails deathByCapture)
+        public GoDaddySessionModel(string username, string password, GoDaddyAccount goDaddyAccount, DeathByCaptureDetails deathByCapture)
         {
             Username = username;
             Password = password;

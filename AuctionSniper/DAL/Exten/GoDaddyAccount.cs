@@ -9,7 +9,9 @@
                 AccountId = AccountID,
                 Username = GoDaddyUsername,
                 Password = GoDaddyPassword,
-                Verified = Verified
+                Verified = Verified,
+                AccountUsername = Users.Username,
+                ReceiveEmail = Users.ReceiveEmails
             };
         }
     }

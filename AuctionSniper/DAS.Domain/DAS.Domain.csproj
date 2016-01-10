@@ -40,16 +40,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeathbyCapture\DeathByCaptureDetails.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Enum\EnumExten.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="GoDaddy\Alerts\Alert.cs" />
     <Compile Include="GoDaddy\Alerts\IAlert.cs" />
+    <Compile Include="GoDaddy\Auction.cs" />
+    <Compile Include="GoDaddy\SystemModel.cs" />
     <Compile Include="GoDaddy\Users\GoDaddyAccount.cs" />
     <Compile Include="GoDaddy\Users\GoDaddySession.cs" />
     <Compile Include="GoDaddy\Users\IGoDaddySession.cs" />
+    <Compile Include="IEmail.cs" />
+    <Compile Include="ISystemRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyComparer.cs" />
+    <Compile Include="SortableBindingList.cs" />
     <Compile Include="Users\IUserRepository.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

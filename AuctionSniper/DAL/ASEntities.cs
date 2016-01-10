@@ -34,6 +34,7 @@ namespace DAL
                 .HasMany(e => e.BackOrders)
                 .WithRequired(e => e.GoDaddyAccount1)
                 .HasForeignKey(e => e.GoDaddyAccount);
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using DAS.Domain.Enum;
+using DAS.Domain.GoDaddy.Users;
 
 namespace DAS.Domain.GoDaddy.Alerts
 {
@@ -22,5 +23,6 @@ namespace DAS.Domain.GoDaddy.Alerts
         public Guid AuctionId { get; set; }
         public bool Custom { get; set; }
         public AlertType Type { get; set; }
+        public Auction Auction { get; set; }
     }
 }
