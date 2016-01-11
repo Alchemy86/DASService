@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\ApplicationTest\packages.config" />
+  <repository path="..\AuctionSniperWindowsService\packages.config" />
+  <repository path="..\DAL\packages.config" />
+  <repository path="..\DAS.DependencyResolution\packages.config" />
+  <repository path="..\GoDaddy\packages.config" />
+  <repository path="..\Lunchboxweb\packages.config" />
+</repositories>
