@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using DAS.Domain;
 using DAS.Domain.Users;
@@ -19,9 +20,13 @@ namespace ApplicationTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GoDaddyAuctionSniper gd =  new GoDaddyAuctionSniper("urbanally@aol.com", _kernal.Get<IUserRepository>());
+            GoDaddyAuctionSniper gd = new GoDaddyAuctionSniper("inna@medi-cons.com", _kernal.Get<IUserRepository>());
             //var loggedin = gd.Login();
             var repo = _kernal.Get<ISystemRepository>();
+            var auc = repo.GetEndingAuctions().FirstOrDefault(x => x.DomainName == "newfantasy.net");
+            gd.PlaceBid(auc);
+            var resw = gd.GetEndDate("185921902");
+            
             var res = repo.GetAlerts();
             var moo = "";
         }

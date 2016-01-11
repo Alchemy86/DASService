@@ -7,13 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Data.Entity.Core.Objects;
-
 namespace ASEntityFramework
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
     using System.Linq;
     
     public partial class ASEntities : DbContext
@@ -34,7 +33,6 @@ namespace ASEntityFramework
         public DbSet<AuctionSearch> AuctionSearch { get; set; }
         public DbSet<AuctionHistory> AuctionHistory { get; set; }
         public DbSet<AuctionHistoryView> AuctionHistoryView { get; set; }
-        public DbSet<Alerts> Alerts { get; set; }
         public DbSet<EventLog> EventLog { get; set; }
         public DbSet<SearchTable> SearchTable { get; set; }
         public DbSet<SearchLayout> SearchLayout { get; set; }
@@ -44,6 +42,7 @@ namespace ASEntityFramework
         public DbSet<Chart_AuctionHistory> Chart_AuctionHistory { get; set; }
         public DbSet<Chart_AuctionsEnding> Chart_AuctionsEnding { get; set; }
         public DbSet<Chart_PopularDomainsThisMonth> Chart_PopularDomainsThisMonth { get; set; }
+        public DbSet<Alerts> Alerts { get; set; }
     
         public virtual int USP_SearchQueryBuilder2(string userID)
         {

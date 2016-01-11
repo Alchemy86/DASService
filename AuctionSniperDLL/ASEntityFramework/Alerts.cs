@@ -14,11 +14,12 @@ namespace ASEntityFramework
     
     public partial class Alerts
     {
-        public System.Guid AlertID { get; set; }
+        public System.Guid AlertID { internal get; set; }
         public string Description { get; set; }
         public System.DateTime TriggerTime { get; set; }
         public bool Processed { get; set; }
         public System.Guid AuctionID { get; set; }
         public bool Custom { get; set; }
+        public string AlertType { get; set; }
     }
 }

@@ -74,6 +74,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Business\Email.cs" />
+    <Compile Include="Business\EnumExtensions.cs" />
     <Compile Include="Business\HtmlParser.cs">
       <SubType>Component</SubType>
     </Compile>

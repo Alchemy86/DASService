@@ -42,6 +42,13 @@ namespace GoDaddy
             return html.Contains("sessionTimeout_onLogout");
         }
 
+        public bool LoggedIn()
+        {
+            const string url = "https://auctions.godaddy.com/";
+            var responseData = Get(url);
+            return responseData.Contains("sessionTimeout_onLogout");
+        }
+
         /// <summary>
         /// Login to godaddy auctions
         /// </summary>
@@ -351,10 +358,23 @@ namespace GoDaddy
             return estimateEnd;
         }
 
+        private bool UnavailableCheck(string auctionRef)
+        {
+            var data = Get(string.Format("https://auctions.godaddy.com/trpItemListing.aspx?miid={0}", auctionRef));
+            return data.Contains("LONGER AVAILABLE THROUGH AUCTION");
+            //LONGER AVAILABLE THROUGH AUCTION
+        }
+
         public void PlaceBid(Auction auction)
         {
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             var url = "https://auctions.godaddy.com/trpSearchResults.aspx";
+
+            if (UnavailableCheck(auction.AuctionRef))
+            {
+                UserRepository.AddHistoryRecord("The site is no longer available through auction, bid cancelled", auction.AuctionId);
+                return;
+            }
 
             UserRepository.AddHistoryRecord("Logging In", auction.AuctionId);
 
@@ -371,10 +391,19 @@ namespace GoDaddy
                 url = "https://auctions.godaddy.com/trpMessageHandler.aspx";
                 postData = "q=ReviewDomains";
                 responseData = Post(url, postData);
-
+                if (responseData.Contains("Item is closed"))
+                {
+                    UserRepository.AddHistoryRecord("Bid Process Ended - The item has been closed", auction.AuctionId);
+                    return;
+                }
                 if (responseData.Contains("ERROR: Bid must be a minimum of"))
                 {
                     UserRepository.AddHistoryRecord("Bid Process Ended - Your max bid is already too small to place", auction.AuctionId);
+                    return;
+                }
+                if (responseData.Contains("You are currently blocked from bidding due to unpaid items"))
+                {
+                    UserRepository.AddHistoryRecord("GoDaddy reports you are blocked from bidding due to unpaid items", auction.AuctionId);
                     return;
                 }
 
@@ -424,6 +453,12 @@ namespace GoDaddy
                         break;
                     }
 
+                }
+                if (hdoc.DocumentNode.InnerHtml.Contains("Confirmed Domains") && hdoc.DocumentNode.InnerHtml.Contains(auction.DomainName)
+                    && hdoc.DocumentNode.InnerHtml.Contains("the high bidder"))
+                {
+                    confirmed = true;
+                    UserRepository.AddHistoryRecord("Bid Confirmed - You are the high bidder!", auction.AuctionId);
                 }
                 if (!confirmed)
                 {

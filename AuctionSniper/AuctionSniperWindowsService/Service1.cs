@@ -53,8 +53,8 @@ namespace AuctionSniperWindowsService
                 Email.SendEmail(SystemRepository.AlertEmail, "ServiceStarted", "Started Azure service",
                     Global.GetPacificTime);
                 CheckTimer = new Timer(10000); // Run every 10 sec
-                //CheckDB();
-                //Email.SendEmail(SystemRepository.AlertEmail, "ServiceTested", "Successfull test", Global.GetPacificTime);
+                CheckDB();
+                Email.SendEmail(SystemRepository.AlertEmail, "ServiceTested", "Successfull test", Global.GetPacificTime);
             }
             catch (Exception ex)
             {

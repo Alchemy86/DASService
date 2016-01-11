@@ -23,36 +23,36 @@ namespace AuctionSniperDLL.Business.Sites
 
         public bool Login(string username, string password, int attempNo = 0)
         {
-            const string url = "https://auctions.godaddy.com";
+            const string url = "https://auctions.godaddy.com/";
             var responseData = Get(url);
-            var key = GetSubString(responseData, "spkey=", "&");
-
-            var loginUrl = string.Format("https://idp.godaddy.com/login.aspx?SPKey={0}", key);
-            var hdoc = HtmlDocument(Get(loginUrl));
+            //Skip if we are logged in
+            if (LoggedIn(responseData))
+            {
+                return true;
+            }
+            var key = GetSubString(responseData, "spkey=", "\"");
+            var loginurl = string.Format("https://idp.godaddy.com/login.aspx?SPKey={0}", key);
+            var hdoc = HtmlDocument(Get(loginurl));
             if (QuerySelector(hdoc.DocumentNode, "img[class='LBD_CaptchaImage']") != null)
             {
                 //Solve Captcha
-
                 var captchaId =
-                     QuerySelector(hdoc.DocumentNode, "input[id='LBD_VCID_idpCatpcha']").Attributes["value"]
-                         .Value;
+                    QuerySelector(hdoc.DocumentNode, "input[id='LBD_VCID_idpCatpcha']").Attributes["value"]
+                        .Value;
                 var imagedata =
                     GetImage(QuerySelector(hdoc.DocumentNode, "img[class='LBD_CaptchaImage']").Attributes["src"].Value);
 
-                
+
                 try
                 {
                     imagedata.Save(Path.Combine(Path.GetTempPath(), username + ".jpg"), ImageFormat.Jpeg);
                     Client client;
-                    using (var ds = new ASEntities())
-                    {
-                        var user = ds.SystemConfig.First(x => x.PropertyID == "DBCUser").Value;
-                        var pass = ds.SystemConfig.First(x => x.PropertyID == "DBCPass").Value;
-                        client = new SocketClient(user, pass);
-                    }
-                    
+                    var user = "a_gibson";
+                    var pass = "Pa55word1";
+                    client = new SocketClient(user, pass);
+
                     //var balance = client.GetBalance();
-                    var captcha = client.Decode(Path.Combine(Path.GetTempPath(), username+".jpg"), 20);
+                    var captcha = client.Decode(Path.Combine(Path.GetTempPath(), username + ".jpg"), 20);
                     if (null != captcha)
                     {
                         /* The CAPTCHA was solved; captcha.Id property holds its numeric ID,
@@ -63,10 +63,12 @@ namespace AuctionSniperDLL.Business.Sites
                         var view = ExtractViewStateSearch(hdoc.DocumentNode.InnerHtml);
                         //var view = QuerySelector(hdoc.DocumentNode, "input[id='__VIEWSTATE'") == null ? "" :
                         //QuerySelector(hdoc.DocumentNode, "input[id='__VIEWSTATE'").Attributes["value"].Value;
-                        var postData = string.Format("__VIEWSTATE={0}&Login%24userEntryPanel2%24UsernameTextBox={1}&Login%24userEntryPanel2%24PasswordTextBox={2}&captcha_value={3}&LBD_VCID_idpCatpcha={4}&Login%24userEntryPanel2%24LoginImageButton.x=0&Login%24userEntryPanel2%24LoginImageButton.y=0",
-                            view, username, password, capturetext, captchaId);
+                        var postData =
+                            string.Format(
+                                "__VIEWSTATE={0}&Login%24userEntryPanel2%24UsernameTextBox={1}&Login%24userEntryPanel2%24PasswordTextBox={2}&captcha_value={3}&LBD_VCID_idpCatpcha={4}&Login%24userEntryPanel2%24LoginImageButton.x=0&Login%24userEntryPanel2%24LoginImageButton.y=0",
+                                view, username, password, capturetext, captchaId);
 
-                        responseData = Post(loginUrl, postData);
+                        responseData = Post(loginurl, postData);
 
                         if (!responseData.Contains("sessionTimeout_onLogout"))
                         {
@@ -76,26 +78,27 @@ namespace AuctionSniperDLL.Business.Sites
                         return responseData.Contains("sessionTimeout_onLogout");
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     new Error().Add(e.Message);
-                    //Email.SendEmail(AppConfig.GetSystemConfig("AlertEmail"),"Captcha Failure",e.Message);
                     CaptchaOverload = true;
                 }
             }
             else
             {
-                var postData = string.Format("loginName={0}&password={1}", username, password);
-                //Login form auto resubmit data
-                responseData = Post(loginUrl, postData);
+                var secondaryLogin = string.Format("https://sso.godaddy.com/?app=idp&path=%2flogin.aspx%3fSPKey%3d{0}", key);
+                
+                var loginData = string.Format("loginName={0}&password={1}",
+                    Uri.EscapeDataString(username),
+                    Uri.EscapeDataString(password));
+                var firstLoginResponse = Post(loginurl, loginData);
+                var login2Data = string.Format("name={0}&password={1}",
+                    Uri.EscapeDataString(username),
+                    Uri.EscapeDataString(password));
 
-                var action = GetSubString(responseData, "action='", "'");
-                var user = UrlEncode(username);
-                var pass = UrlEncode(password);
+                var secondaryLoginResponse = Post(secondaryLogin, login2Data);
 
-                var nextResponse = Post(action, string.Format("name={0}&password={1}", user, pass));
-
-                return nextResponse.Contains("sessionTimeout_onLogout");
+                return LoggedIn(secondaryLoginResponse);
             }
 
             if (attempNo < 3)
@@ -104,6 +107,11 @@ namespace AuctionSniperDLL.Business.Sites
             }
 
             return false;
+        }
+
+        private bool LoggedIn(string html)
+        {
+            return html.Contains("sessionTimeout_onLogout");
         }
 
         public bool LoggedIn()
@@ -208,10 +216,10 @@ namespace AuctionSniperDLL.Business.Sites
             const string searchString = "https://auctions.godaddy.com/trpSearchResults.aspx";
             var auctions = new SortableBindingList<AuctionSearch>();
 
-            var doc = HtmlDocument(Post(searchString, 
-                "t=22&action=search&hidAdvSearch=ddlAdvKeyword:1|txtKeyword:" + 
-                searchText.Replace(" ", ",") + 
-                "&rtr=7&baid=-1&searchMode=1sg=1&showAdult=true&searchDir=1&event=&rnd=0.698455864796415&EqnJYig=561ef36"));
+            var doc = HtmlDocument(Post(searchString,
+                "t=16&action=search&hidAdvSearch=ddlAdvKeyword:1|txtKeyword:" +
+                searchText.Replace(" ", ",")
+                + "|ddlCharacters:0|txtCharacters:|txtMinTraffic:|txtMaxTraffic:|txtMinDomainAge:|txtMaxDomainAge:|txtMinPrice:|txtMaxPrice:|ddlCategories:0|chkAddBuyNow:false|chkAddFeatured:false|chkAddDash:true|chkAddDigit:true|chkAddWeb:false|chkAddAppr:false|chkAddInv:false|chkAddReseller:false|ddlPattern1:|ddlPattern2:|ddlPattern3:|ddlPattern4:|chkSaleOffer:false|chkSalePublic:true|chkSaleExpired:true|chkSaleCloseouts:false|chkSaleUsed:false|chkSaleBuyNow:false|chkSaleDC:false|chkAddOnSale:false|ddlAdvBids:0|txtBids:|txtAuctionID:|ddlDateOffset:&rtr=2&baid=-1&searchDir=1&rnd=0.899348703911528&jnkRjrZ=6dd022d"));
 
 
             if (QuerySelectorAll(doc.DocumentNode, "tr.srRow2, tr.srRow1") != null)
@@ -286,6 +294,7 @@ namespace AuctionSniperDLL.Business.Sites
             }
 
             return auctions.AsQueryable();
+
 
         }
 

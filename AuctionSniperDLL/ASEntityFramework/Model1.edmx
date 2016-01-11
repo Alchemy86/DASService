@@ -37,12 +37,13 @@
           <Key>
             <PropertyRef Name="AlertID" />
           </Key>
-          <Property Name="AlertID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AlertID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="800" Nullable="false" />
           <Property Name="TriggerTime" Type="datetime" Nullable="false" />
           <Property Name="Processed" Type="bit" Nullable="false" />
           <Property Name="AuctionID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Custom" Type="bit" Nullable="false" />
+		  <Property Name="AlertType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="AuctionHistory">
           <Key>
@@ -306,11 +307,11 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_AuctionHistory' does not h
 warning 6002: The table/view 'AuctionSniper.dbo.Chart_AuctionsEnding' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Chart_AuctionsEnding">
           <Key>
-            <PropertyRef Name="AuctionRef" />
             <PropertyRef Name="DomainName" />
             <PropertyRef Name="EndDate" />
             <PropertyRef Name="Username" />
             <PropertyRef Name="MinBid" />
+            <PropertyRef Name="AuctionRef" />
           </Key>
           <Property Name="AuctionRef" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="DomainName" Type="nvarchar" MaxLength="250" Nullable="false" />
@@ -460,7 +461,6 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
           </AssociationSet>
           <EntitySet Name="AuctionHistory" EntityType="AuctionSniperModel.AuctionHistory" />
           <EntitySet Name="AuctionHistoryView" EntityType="AuctionSniperModel.AuctionHistoryView" />
-          <EntitySet Name="Alerts" EntityType="AuctionSniperModel.Alerts" />
           <EntitySet Name="EventLog" EntityType="AuctionSniperModel.EventLog" />
           <FunctionImport Name="USP_SearchQueryBuilder2">
           <Parameter Name="UserID" Mode="In" Type="String" />
@@ -473,6 +473,7 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
           <EntitySet Name="Chart_AuctionHistory" EntityType="AuctionSniperModel.Chart_AuctionHistory" />
           <EntitySet Name="Chart_AuctionsEnding" EntityType="AuctionSniperModel.Chart_AuctionsEnding" />
           <EntitySet Name="Chart_PopularDomainsThisMonth" EntityType="AuctionSniperModel.Chart_PopularDomainsThisMonth" />
+          <EntitySet Name="Alerts" EntityType="AuctionSniperModel.Alerts" />
         </EntityContainer>
         <EntityType Name="GoDaddyAccount">
           <Key>
@@ -599,17 +600,6 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
           <Property Type="String" Name="Text" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
           <Property Type="Guid" Name="AuctionLink" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Alerts">
-          <Key>
-            <PropertyRef Name="AlertID" />
-          </Key>
-          <Property Type="Guid" Name="AlertID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Description" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="TriggerTime" Nullable="false" Precision="3" />
-          <Property Type="Boolean" Name="Processed" Nullable="false" />
-          <Property Type="Guid" Name="AuctionID" Nullable="false" />
-          <Property Type="Boolean" Name="Custom" Nullable="false" />
         </EntityType>
         <EntityType Name="EventLog">
           <Key>
@@ -811,11 +801,11 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
         </EntityType>
         <EntityType Name="Chart_AuctionsEnding">
           <Key>
-            <PropertyRef Name="AuctionRef" />
             <PropertyRef Name="DomainName" />
             <PropertyRef Name="EndDate" />
             <PropertyRef Name="Username" />
             <PropertyRef Name="MinBid" />
+            <PropertyRef Name="AuctionRef" />
           </Key>
           <Property Name="AuctionRef" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="DomainName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -832,6 +822,18 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
           <Property Name="AuctionRef" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="DomainName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Bids" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Alerts">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Name="AlertID" Type="Guid" Nullable="false" ConcurrencyMode="Fixed" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="TriggerTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+          <Property Name="AuctionID" Type="Guid" Nullable="false" />
+          <Property Name="Custom" Type="Boolean" Nullable="false" />
+          <Property Name="AlertType" Type="String" Nullable="false" MaxLength="50" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -923,18 +925,6 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Alerts">
-            <EntityTypeMapping TypeName="AuctionSniperModel.Alerts">
-              <MappingFragment StoreEntitySet="Alerts">
-                <ScalarProperty Name="Custom" ColumnName="Custom" />
-                <ScalarProperty Name="AuctionID" ColumnName="AuctionID" />
-                <ScalarProperty Name="Processed" ColumnName="Processed" />
-                <ScalarProperty Name="TriggerTime" ColumnName="TriggerTime" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AlertID" ColumnName="AlertID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1162,6 +1152,19 @@ warning 6002: The table/view 'AuctionSniper.dbo.Chart_PopularDomainsThisMonth' d
                 <ScalarProperty Name="Bids" ColumnName="Bids" />
                 <ScalarProperty Name="DomainName" ColumnName="DomainName" />
                 <ScalarProperty Name="AuctionRef" ColumnName="AuctionRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alerts">
+            <EntityTypeMapping TypeName="AuctionSniperModel.Alerts">
+              <MappingFragment StoreEntitySet="Alerts">
+                <ScalarProperty Name="AlertType" ColumnName="AlertType" />
+                <ScalarProperty Name="Custom" ColumnName="Custom" />
+                <ScalarProperty Name="AuctionID" ColumnName="AuctionID" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="TriggerTime" ColumnName="TriggerTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AlertID" ColumnName="AlertID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

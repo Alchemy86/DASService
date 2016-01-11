@@ -340,21 +340,20 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>ASEntityFramework.dll</td><td>{943D1C7C-339C-4458-888D-9655C1552FAD}</td><td>INSTALLDIR</td><td>2</td><td/><td>asentityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>AuctionSniperDLL.dll</td><td>{9C3271D4-7999-4014-9664-B3F0A3B19F52}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperdll.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>AuctionSniperWnSer.XmlSerializers.dll</td><td>{6BFF938D-F240-4325-B378-2764394B7513}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperwnser.xmlserial</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>AuctionSniperWnSer.exe</td><td>{115184AC-69DF-42AB-B69B-F115C21152E8}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperwnser.exe</td><td>81</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DeathByCaptcha.dll</td><td>{C106863C-521F-49CA-A4DA-C97519E647FE}</td><td>INSTALLDIR</td><td>2</td><td/><td>deathbycaptcha.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td>{4BA600EA-6A35-4493-B4D8-4FD84933AD76}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.dll</td><td>{C00040E2-B050-475B-AA02-27688F83EBDC}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Fizzler.dll</td><td>{E8DA7CC1-1E74-45EC-8372-6F0A1234A00D}</td><td>INSTALLDIR</td><td>2</td><td/><td>fizzler.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HtmlAgilityPack.dll</td><td>{F86FEF45-8A2D-49D4-9E53-867F3E1EC9CB}</td><td>INSTALLDIR</td><td>2</td><td/><td>htmlagilitypack.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ASEntityFramework.dll</td><td>{1E1F1058-D305-4229-97B7-45D31443F1BE}</td><td>INSTALLDIR</td><td>2</td><td/><td>asentityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>AuctionSniperDLL.dll</td><td>{D432861E-2956-417A-9FE7-FEC71CA9FBCB}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperdll.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>AuctionSniperWnSer.XmlSerializers.dll</td><td>{CDB6ABCC-900C-4FCE-9B0B-60E477278C35}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperwnser.xmlserial</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>AuctionSniperWnSer.exe</td><td>{6F72250D-088A-414A-8509-A659E8FB586C}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperwnser.exe</td><td>81</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>AuctionSniperWnSer.vshost.exe</td><td>{AB8F25BE-49E9-4D9C-9A06-70C614C0698D}</td><td>INSTALLDIR</td><td>2</td><td/><td>auctionsniperwnser.vshost.ex</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DeathByCaptcha.dll</td><td>{9E2D3C63-43B2-43AF-AC56-6514D92A10D7}</td><td>INSTALLDIR</td><td>2</td><td/><td>deathbycaptcha.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td>{4CD0B274-6223-4953-A5AC-F4A4DC386655}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.dll</td><td>{FBD7F404-6DF0-483E-8FF6-D86194A87D0C}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Fizzler.dll</td><td>{FDEAE14F-95C3-4B83-9965-D21F03516BE5}</td><td>INSTALLDIR</td><td>2</td><td/><td>fizzler.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HtmlAgilityPack.dll</td><td>{4CCE431C-B53E-4382-BFA5-F7AEE73C905E}</td><td>INSTALLDIR</td><td>2</td><td/><td>htmlagilitypack.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{965C052B-0184-4D23-85AF-C865876C2054}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>LunchboxSource.XmlSerializers.dll</td><td>{92D15650-8214-426B-9DD1-21106547C6FC}</td><td>INSTALLDIR</td><td>2</td><td/><td>lunchboxsource.xmlserializer</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>LunchboxSource.dll</td><td>{B1F6125F-FA14-4E30-A4CF-604A1B1CDDD1}</td><td>INSTALLDIR</td><td>2</td><td/><td>lunchboxsource.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MySql.Data.dll</td><td>{9C2D9ACB-F990-4029-AE0A-703604BDEE9B}</td><td>INSTALLDIR</td><td>2</td><td/><td>mysql.data.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Newtonsoft.Json.dll</td><td>{C62ADE0B-D2E4-4ED7-A263-69F8CD24C909}</td><td>INSTALLDIR</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Twitterizer2.dll</td><td>{A778CE87-B1DB-4643-9D1D-23C29CB7055C}</td><td>INSTALLDIR</td><td>2</td><td/><td>twitterizer2.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>LunchboxSource.XmlSerializers.dll</td><td>{E0F23DF2-0C3D-4047-A56F-663249AF26DD}</td><td>INSTALLDIR</td><td>2</td><td/><td>lunchboxsource.xmlserializer</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>LunchboxSource.dll</td><td>{03A6D582-FC20-4531-8419-15023421AFB4}</td><td>INSTALLDIR</td><td>2</td><td/><td>lunchboxsource.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{5C7FE421-A5BA-4928-AE66-4CA1A8267E7D}</td><td>INSTALLDIR</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1887,6 +1886,7 @@
 		<row><td>AlwaysInstall</td><td>AuctionSniperDLL.dll</td></row>
 		<row><td>AlwaysInstall</td><td>AuctionSniperWnSer.XmlSerializers.dll</td></row>
 		<row><td>AlwaysInstall</td><td>AuctionSniperWnSer.exe</td></row>
+		<row><td>AlwaysInstall</td><td>AuctionSniperWnSer.vshost.exe</td></row>
 		<row><td>AlwaysInstall</td><td>DeathByCaptcha.dll</td></row>
 		<row><td>AlwaysInstall</td><td>EntityFramework.SqlServer.dll</td></row>
 		<row><td>AlwaysInstall</td><td>EntityFramework.dll</td></row>
@@ -1895,9 +1895,7 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>LunchboxSource.XmlSerializers.dll</td></row>
 		<row><td>AlwaysInstall</td><td>LunchboxSource.dll</td></row>
-		<row><td>AlwaysInstall</td><td>MySql.Data.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Newtonsoft.Json.dll</td></row>
-		<row><td>AlwaysInstall</td><td>Twitterizer2.dll</td></row>
 	</table>
 
 	<table name="File">
@@ -1919,8 +1917,9 @@
 		<row><td>auctionsniperwnser.exe</td><td>AuctionSniperWnSer.exe</td><td>AUCTIO~1.EXE|AuctionSniperWnSer.exe</td><td>0</td><td/><td/><td>0</td><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.exe</td><td>1</td><td/></row>
 		<row><td>auctionsniperwnser.exe.confi</td><td>ISX_DEFAULTCOMPONENT</td><td>AUCTIO~1.CON|AuctionSniperWnSer.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.exe.config</td><td>1</td><td/></row>
 		<row><td>auctionsniperwnser.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>AUCTIO~1.PDB|AuctionSniperWnSer.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.pdb</td><td>1</td><td/></row>
-		<row><td>auctionsniperwnser.vshost.ex</td><td>ISX_DEFAULTCOMPONENT</td><td>AUCTIO~1.CON|AuctionSniperWnSer.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>auctionsniperwnser.vshost.ex1</td><td>ISX_DEFAULTCOMPONENT</td><td>AUCTIO~1.MAN|AuctionSniperWnSer.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>auctionsniperwnser.vshost.ex</td><td>AuctionSniperWnSer.vshost.exe</td><td>AUCTIO~1.EXE|AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.vshost.exe</td><td>1</td><td/></row>
+		<row><td>auctionsniperwnser.vshost.ex1</td><td>ISX_DEFAULTCOMPONENT</td><td>AUCTIO~1.CON|AuctionSniperWnSer.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.vshost.exe.config</td><td>1</td><td/></row>
+		<row><td>auctionsniperwnser.vshost.ex2</td><td>ISX_DEFAULTCOMPONENT</td><td>AUCTIO~1.MAN|AuctionSniperWnSer.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.vshost.exe.manifest</td><td>1</td><td/></row>
 		<row><td>auctionsniperwnser.xmlserial</td><td>AuctionSniperWnSer.XmlSerializers.dll</td><td>AUCTIO~1.DLL|AuctionSniperWnSer.XmlSerializers.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\AuctionSniperWnSer.XmlSerializers.dll</td><td>1</td><td/></row>
 		<row><td>deathbycaptcha.dll</td><td>DeathByCaptcha.dll</td><td>DEATHB~1.DLL|DeathByCaptcha.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\DeathByCaptcha.dll</td><td>1</td><td/></row>
 		<row><td>entityframework.dll</td><td>EntityFramework.dll</td><td>ENTITY~1.DLL|EntityFramework.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\EntityFramework.dll</td><td>1</td><td/></row>
@@ -1932,9 +1931,7 @@
 		<row><td>lunchboxsource.dll</td><td>LunchboxSource.dll</td><td>LUNCHB~1.DLL|LunchboxSource.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\LunchboxSource.dll</td><td>1</td><td/></row>
 		<row><td>lunchboxsource.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>LUNCHB~1.PDB|LunchboxSource.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\LunchboxSource.pdb</td><td>1</td><td/></row>
 		<row><td>lunchboxsource.xmlserializer</td><td>LunchboxSource.XmlSerializers.dll</td><td>LUNCHB~1.DLL|LunchboxSource.XmlSerializers.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\LunchboxSource.XmlSerializers.dll</td><td>1</td><td/></row>
-		<row><td>mysql.data.dll</td><td>MySql.Data.dll</td><td>MYSQLD~1.DLL|MySql.Data.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\MySql.Data.dll</td><td>1</td><td/></row>
 		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>NEWTON~1.DLL|Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\Newtonsoft.Json.dll</td><td>1</td><td/></row>
-		<row><td>twitterizer2.dll</td><td>Twitterizer2.dll</td><td>TWITTE~1.DLL|Twitterizer2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\git\DASService\AuctionSniperWnSer\AuctionSniperWnSer\bin\Release\Twitterizer2.dll</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2079,21 +2076,20 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>ASEntityFramework.dll</td><td/><td/><td>_DBDE9923_0501_435D_8477_E1F2157162F7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>AuctionSniperDLL.dll</td><td/><td/><td>_E138F0E8_3334_4878_AE01_152E3BF87D29_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>AuctionSniperWnSer.XmlSerializers.dll</td><td/><td/><td>_4458310C_6FD4_4E21_B28D_C805132E68DC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>AuctionSniperWnSer.exe</td><td/><td/><td>_2538F91C_AB41_41AD_AD0C_C53EB29E662E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DeathByCaptcha.dll</td><td/><td/><td>_48026FBF_80CD_4AA6_A5F1_2B7390F04076_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_8D93C7EE_8CC0_4413_BE46_FDC3A3433ACB_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.dll</td><td/><td/><td>_AE1131ED_0085_4294_BE2F_6D4ECA254BA3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Fizzler.dll</td><td/><td/><td>_839244FB_5BFD_4CA3_BD0F_1CBA5442E630_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HtmlAgilityPack.dll</td><td/><td/><td>_6EC55002_2EA3_4A1A_9B69_2EE4A4597BCE_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ASEntityFramework.dll</td><td/><td/><td>_8AF8C0AB_0D5F_4000_B291_83ABCA2294B7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>AuctionSniperDLL.dll</td><td/><td/><td>_684D56B1_37F8_4681_988D_3D488FBE1700_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>AuctionSniperWnSer.XmlSerializers.dll</td><td/><td/><td>_35068BF5_4208_4162_94F5_6AD1C4180335_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>AuctionSniperWnSer.exe</td><td/><td/><td>_98742C3C_27C1_418C_883A_B66B8C578359_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>AuctionSniperWnSer.vshost.exe</td><td/><td/><td>_5306B60B_3B7F_4DE8_AA70_5A354E3AE261_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DeathByCaptcha.dll</td><td/><td/><td>_B2ABD929_9FCD_4C46_9787_80C0AC641893_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_8C28DB56_2B0C_41C9_AA3E_3BE007D04DA0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.dll</td><td/><td/><td>_12C37604_74D2_47C9_8FB6_88E754477FEF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Fizzler.dll</td><td/><td/><td>_66B6F00D_E23A_4F0A_80C8_FFD549EB884C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HtmlAgilityPack.dll</td><td/><td/><td>_89189431_CFA6_4540_A79A_9B25EE56213A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_D206D334_67D5_4BBC_A35A_DB03F4CE726E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>LunchboxSource.XmlSerializers.dll</td><td/><td/><td>_701C07B7_40A9_4F68_9750_E8A4CBF3964D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>LunchboxSource.dll</td><td/><td/><td>_34B40D1B_2365_4BCD_B0D5_10AC9131D75C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MySql.Data.dll</td><td/><td/><td>_8AF00AB7_5E6D_4FD1_8D5B_C582A01A2B60_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_CC164D6E_CD49_4500_84A4_AAE4C6F83607_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Twitterizer2.dll</td><td/><td/><td>_B77E9E83_9868_4D3D_8F91_2DAC80119635_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>LunchboxSource.XmlSerializers.dll</td><td/><td/><td>_96807F56_1210_4097_832A_5D2737728222_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>LunchboxSource.dll</td><td/><td/><td>_9C456181_BDB3_413D_9003_CE5BB2456DA9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_328615DF_A18D_4B23_B2F3_6A308E4CDC16_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2711,7 +2707,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Lunchboxcode</td><td>0</td><td/><td>1654856918</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Lunchboxcode</td><td>0</td><td/><td>1352977668</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>362998672</td></row>
@@ -3524,12 +3520,20 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>362974128</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME10</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>1352975876</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME11</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td>1352975876</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME12</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>1352942821</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME13</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td>1352942821</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME14</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>1352949253</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME15</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td>1352949253</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td>362974128</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>1570948972</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td>1570948972</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>1570933908</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.vshost.exe</td><td>0</td><td/><td>1570933908</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWnSer.exe</td><td>0</td><td/><td>1789103860</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWindowsService.exe</td><td>0</td><td/><td>1352975748</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>1033</td><td>LAUNCH~1.EXE|Launch AuctionSniperWindowsService.vshost.exe</td><td>0</td><td/><td>1352975748</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>362998672</td></row>
@@ -3818,8 +3822,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>362998672</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>362998672</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.Lunchboxcode.com</td><td>0</td><td/><td>1654856918</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>Lunchboxcode</td><td>0</td><td/><td>1654856918</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.Lunchboxcode.com</td><td>0</td><td/><td>1352977668</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>Lunchboxcode</td><td>0</td><td/><td>1352977668</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>362998672</td></row>
 	</table>
 
@@ -3928,12 +3932,20 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWindo_1934E751752D49E682E2F208619732EB.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWindo_EF2170DBF22F4AD38CBF4F754FEE0BE5.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWnSer_04A9B36C981B4D3EAD07815A6CBB556B.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_0B34E40E7F0447F4A3F0CBCEEA943414.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWnSer_0B3C639418594D8197D769F070E14235.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_1EB17D87449148008590A4AAD4A31511.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_316D65FAE2CD4338BDB51E99C82201D3.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWnSer_3E6897AFCE154FE284148B71697815C7.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWnSer_4A36CD29EC724FFCA61D71ED47303225.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_62E87B36EAA4426193B30DA17BAD1888.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWnSer_72896DE599504C76B8194CF4433A92C9.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_7FE4A080D14549C7B73C4F5D2D2F197F.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_80A0A8CDDB294924AEDB44F14F5098DC.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>AuctionSniperWnSer_C63CA91EB3D449F681F3902D50273822.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>AuctionSniperWnSer_E78CDBDFA1B84984A1EA56C2A277E6D4.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 	</table>
 
@@ -4069,7 +4081,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{02860F28-E1A2-43B1-8ABA-BD9EC742DCCD}</td></row>
 		<row><td>ISUSSignature</td><td>{33BF5C64-F3B1-41FB-B374-3E7936F28555}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewFeatureFiles,viewSetupDesign,viewAppFiles,viewProject</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewFeatureFiles,viewSetupDesign,viewAppFiles,viewProject,viewSystemSearch</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4521,6 +4533,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
 		<row><td>AuctionSniperWnSer.exe</td><td>AuctionSniperWnSer.exe</td><td/><td>auctio_1_auctionsniperwnsvc</td><td>2</td></row>
+		<row><td>AuctionSniperWnSer.vshost.exe</td><td>AuctionSniperWnSer.vshost.exe</td><td/><td>auctio_1_auctionsniperwnsvc</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4606,7 +4619,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>AuctionSniperWnSer.exe</td><td>auctio_1_auctionsniperwnsvc</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>AuctionSniperWnSer.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AuctionSniperWnSer_0B34E40E7F0447F4A3F0CBCEEA943414.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AuctionSniperWnSer.exe</td><td>auctio_1_auctionsniperwnsvc</td><td>##IDS_SHORTCUT_DISPLAY_NAME14##</td><td>AuctionSniperWnSer.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AuctionSniperWnSer_3E6897AFCE154FE284148B71697815C7.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AuctionSniperWnSer.vshost.exe</td><td>auctio_1_auctionsniperwnsvc</td><td>##IDS_SHORTCUT_DISPLAY_NAME15##</td><td>AuctionSniperWnSer.vshost.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AuctionSniperWnSer_04A9B36C981B4D3EAD07815A6CBB556B.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
