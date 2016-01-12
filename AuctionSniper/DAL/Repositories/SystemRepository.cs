@@ -89,5 +89,17 @@ namespace DAL.Repositories
                         .AsEnumerable()
                         .Select(x => x.ToDomainObject());
         }
+
+
+        public void SaveGodaddyAccount(DAS.Domain.GoDaddy.Users.GoDaddyAccount account)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public DAS.Domain.Users.User SaveAccount(DAS.Domain.Users.User account)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

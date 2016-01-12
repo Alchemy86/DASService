@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using DAL;
 using DAS.Domain;
@@ -245,6 +246,25 @@ namespace GoDaddy
             }
 
             return endDate;
+        }
+
+        public IQueryable<Auction> Search(string searchText, bool auctiononly)
+        {
+            var search = Search(searchText);
+
+            var my = (from e in search
+                select new Auction()
+                {
+                    AccountId = e.AccountID,
+                    AuctionId = e.AuctionID,
+                    AuctionRef = e.AuctionRef,
+                    DomainName = e.DomainName,
+                    EndDate = e.EndDate,
+                    GoDaddyAccount = e.GoDaddyAccount.ToDomainObject(),
+                    MyBid = e.MyBid,
+                    MinBid = e.MinBid
+                });
+            return my;
         }
 
         public IQueryable<AuctionSearch> Search(string searchText)

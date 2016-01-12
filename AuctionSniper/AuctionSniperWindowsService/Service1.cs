@@ -122,10 +122,7 @@ namespace AuctionSniperWindowsService
         {
             try
             {
-                if (!ProcessingBids)
-                {
-                    CheckDB();
-                }
+                CheckDB();
                 
             }
             catch (Exception ex)

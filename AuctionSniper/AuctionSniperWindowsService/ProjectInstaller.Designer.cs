@@ -40,8 +40,8 @@
             // serviceInstaller1
             // 
             this.serviceInstaller1.Description = "Runs processes for AS";
-            this.serviceInstaller1.DisplayName = "AuctionSniperService";
-            this.serviceInstaller1.ServiceName = "Service1";
+            this.serviceInstaller1.DisplayName = "DasAuctionSniper";
+            this.serviceInstaller1.ServiceName = "DasAuctionSniper";
             // 
             // ProjectInstaller
             // 

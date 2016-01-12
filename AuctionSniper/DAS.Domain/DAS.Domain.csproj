@@ -57,6 +57,7 @@
     <Compile Include="PropertyComparer.cs" />
     <Compile Include="SortableBindingList.cs" />
     <Compile Include="Users\IUserRepository.cs" />
+    <Compile Include="Users\User.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -40,8 +40,8 @@
             // serviceInstaller1
             // 
             this.serviceInstaller1.Description = "Runs bids for AuctionSniper WEB";
-            this.serviceInstaller1.DisplayName = "AuctionSniperWS";
-            this.serviceInstaller1.ServiceName = "AuctionSniperWS";
+            this.serviceInstaller1.DisplayName = "AuctionSniperWS2";
+            this.serviceInstaller1.ServiceName = "AuctionSniperWS2";
             // 
             // ProjectInstaller
             // 
