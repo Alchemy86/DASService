@@ -8,10 +8,9 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using HtmlAgilityPack;
 using System.Drawing;
+using HtmlAgilityPack;
 using Lunchboxweb.BaseFunctions;
-using Ninject;
 
 namespace Lunchboxweb
 {

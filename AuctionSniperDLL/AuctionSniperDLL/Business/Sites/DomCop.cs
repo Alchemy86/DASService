@@ -2,8 +2,7 @@
 using System.Linq;
 using ASEntityFramework;
 using HtmlAgilityPack;
-using LunchboxSource.Business.Encryption;
-using LunchboxSource.Business.Http;
+using Lunchboxweb;
 
 namespace AuctionSniperDLL.Business.Sites
 {
@@ -45,7 +44,7 @@ namespace AuctionSniperDLL.Business.Sites
             {
                 return int.Parse(Math.Floor(Convert.ToDouble(input.ToLower().Replace("m", "").Replace("$", "").Trim()) * 1000).ToString());
             }
-            return TryParse_INT(input.Replace("$", "").Trim());
+            return TextModifier.TryParse_INT(input.Replace("$", "").Trim());
             //return new string(input.Where(char.IsDigit).ToArray());
         }
 
@@ -92,7 +91,7 @@ namespace AuctionSniperDLL.Business.Sites
             var estimateEnd = DateTime.Now;
             if (node.InnerText != null)
             {
-                var vals = HTMLDecode(node.InnerText).Trim().Split(new[] { ' ' });
+                var vals = HtmlDecode(node.InnerText).Trim().Split(new[] { ' ' });
 
                 foreach (var item in vals)
                 {
@@ -138,130 +137,130 @@ namespace AuctionSniperDLL.Business.Sites
 
                 var results = Post(url, searchString);
 
-                var json = JSONSerializer.DeserializeDynamic(results.Trim());
+                //var json = new list;// JSONSerializer.DeserializeDynamic(results.Trim());
 
-                foreach (var site in json["aaData"])
-                {
-                    var adv = new AdvSearch{UserID = userid};
-                    try
-                    {
-                        var moo = site["1"];
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-                    var content = (string)site["1"].ToString();
-                    var hdoc = HtmlDocument((string)content);
-                    adv.DomainName = QuerySelector(hdoc.DocumentNode, "span[class='big-domain'] > a").Attributes["alt"].Value;
+                //foreach (var site in json["aaData"])
+                //{
+                //    var adv = new AdvSearch{UserID = userid};
+                //    try
+                //    {
+                //        var moo = site["1"];
+                //    }
+                //    catch (Exception)
+                //    {
+                //        continue;
+                //    }
+                //    var content = (string)site["1"].ToString();
+                //    var hdoc = HtmlDocument((string)content);
+                //    adv.DomainName = QuerySelector(hdoc.DocumentNode, "span[class='big-domain'] > a").Attributes["alt"].Value;
                     
-                    if (content.Contains("godaddy"))
-                    {
-                        adv.DomainLink = "https://au.auctions.godaddy.com/trpItemListing.aspx?domain=" + adv.DomainName;//QuerySelector(hdoc.DocumentNode, "span[class='big-domain'] > a").Attributes["href"].Value;
-                        adv.IsGOdaddy = true;
-                        adv.IsAuction = true; //for now.. now way to tell
-                    }
-                    else if (content.Contains("namejet"))
-                    {
-                        adv.DomainLink = "http://www.namejet.com/Pages/Auctions/BackorderDetails.aspx?domainname=" + adv.DomainName;
-                        adv.IsAuction = true;
-                    }
-                    else if (content.Contains("dynadot.com"))
-                    {
-                        adv.DomainLink = "https://www.dynadot.com/market/backorder/" + adv.DomainName;
-                        adv.IsAuction = false;
-                    }
-                    else if (content.Contains("snapnames"))
-                    {
-                        adv.DomainLink = string.Format("https://www.snapnames.com/domain/{0}.action", adv.DomainName);
-                        adv.IsAuction = false;
-                    }
-                    else if (content.Contains("sedo"))
-                    {
-                        adv.DomainLink = "http://sedo.com/search/details.php4?domain=" + adv.DomainName;
-                        adv.IsAuction = true;
-                    }
+                //    if (content.Contains("godaddy"))
+                //    {
+                //        adv.DomainLink = "https://au.auctions.godaddy.com/trpItemListing.aspx?domain=" + adv.DomainName;//QuerySelector(hdoc.DocumentNode, "span[class='big-domain'] > a").Attributes["href"].Value;
+                //        adv.IsGOdaddy = true;
+                //        adv.IsAuction = true; //for now.. now way to tell
+                //    }
+                //    else if (content.Contains("namejet"))
+                //    {
+                //        adv.DomainLink = "http://www.namejet.com/Pages/Auctions/BackorderDetails.aspx?domainname=" + adv.DomainName;
+                //        adv.IsAuction = true;
+                //    }
+                //    else if (content.Contains("dynadot.com"))
+                //    {
+                //        adv.DomainLink = "https://www.dynadot.com/market/backorder/" + adv.DomainName;
+                //        adv.IsAuction = false;
+                //    }
+                //    else if (content.Contains("snapnames"))
+                //    {
+                //        adv.DomainLink = string.Format("https://www.snapnames.com/domain/{0}.action", adv.DomainName);
+                //        adv.IsAuction = false;
+                //    }
+                //    else if (content.Contains("sedo"))
+                //    {
+                //        adv.DomainLink = "http://sedo.com/search/details.php4?domain=" + adv.DomainName;
+                //        adv.IsAuction = true;
+                //    }
 
-                    content = site["0"];
-                    hdoc = HtmlDocument((string)content);
-                    adv.Ref = QuerySelector(hdoc.DocumentNode, "input").Attributes["id"].Value.Split(new []{'|'}).First();
+                //    content = site["0"];
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.Ref = QuerySelector(hdoc.DocumentNode, "input").Attributes["id"].Value.Split(new []{'|'}).First();
  
-                    content = site["2"].ToString();
-                    int defval = 0;
-                    hdoc = HtmlDocument((string)content);
-                    adv.Age = int.Parse(QuerySelector(hdoc.DocumentNode, "b") == null ? "0" : QuerySelector(hdoc.DocumentNode, "b").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "b").InnerText);
+                //    content = site["2"].ToString();
+                //    int defval = 0;
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.Age = int.Parse(QuerySelector(hdoc.DocumentNode, "b") == null ? "0" : QuerySelector(hdoc.DocumentNode, "b").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "b").InnerText);
 
-                    content = site["3"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.PageRank = int.Parse(QuerySelector(hdoc.DocumentNode, "span[class='big-text-pr']") == null ? "0" : QuerySelector(hdoc.DocumentNode, "span[class='big-text-pr']").InnerText);
+                //    content = site["3"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.PageRank = int.Parse(QuerySelector(hdoc.DocumentNode, "span[class='big-text-pr']") == null ? "0" : QuerySelector(hdoc.DocumentNode, "span[class='big-text-pr']").InnerText);
 
-                    content = site["4"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.MOZDA = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["4"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.MOZDA = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["5"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.MOZPA = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["5"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.MOZPA = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    //Needs to be decimal
-                    content = site["6"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.MozRank = GetDecimal(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    //Needs to be decimal
+                //    content = site["6"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.MozRank = GetDecimal(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    //Needs to be decimal
-                    content = site["7"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.MozTrust = GetDecimal(QuerySelector(hdoc.DocumentNode, "a") == null ? "0.00" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0.00" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    //Needs to be decimal
+                //    content = site["7"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.MozTrust = GetDecimal(QuerySelector(hdoc.DocumentNode, "a") == null ? "0.00" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0.00" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["8"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.CF = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" :  QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["8"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.CF = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" :  QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["9"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.TF = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["9"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.TF = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["9"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.TF = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["9"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.TF = int.Parse(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    //Needs to be decimal - maybe
-                    content = site["10"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.AlexARank = GetDecimal((QuerySelector(hdoc.DocumentNode, "a") == null || QuerySelector(hdoc.DocumentNode, "a").InnerText == "-") ? "0.00" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    //Needs to be decimal - maybe
+                //    content = site["10"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.AlexARank = GetDecimal((QuerySelector(hdoc.DocumentNode, "a") == null || QuerySelector(hdoc.DocumentNode, "a").InnerText == "-") ? "0.00" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["11"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.MozDom = GetNumbers((QuerySelector(hdoc.DocumentNode, "a") == null || QuerySelector(hdoc.DocumentNode, "a").InnerText == "-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["11"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.MozDom = GetNumbers((QuerySelector(hdoc.DocumentNode, "a") == null || QuerySelector(hdoc.DocumentNode, "a").InnerText == "-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["12"].ToString();
-                    hdoc = HtmlDocument((string)content);
-                    adv.MajDom = GetNumbers(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
+                //    content = site["12"].ToString();
+                //    hdoc = HtmlDocument((string)content);
+                //    adv.MajDom = GetNumbers(QuerySelector(hdoc.DocumentNode, "a") == null ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText.Contains("-") ? "0" : QuerySelector(hdoc.DocumentNode, "a").InnerText);
 
-                    content = site["15"].ToString();
-                    adv.DomainPrice = GetNumbers(content);
+                //    content = site["15"].ToString();
+                //    adv.DomainPrice = GetNumbers(content);
 
-                    content = (string)HTMLDecode(site["16"].ToString());
-                    if (((string)content).Contains("<"))
-                    {
-                        content = ((string) content).Split(new [] {'<'}).First().Trim();
-                    }
-                    adv.EsitmateEnd = ExtractEndDate(content);
+                //    content = (string)HtmlDecode(site["16"].ToString());
+                //    if (((string)content).Contains("<"))
+                //    {
+                //        content = ((string) content).Split(new [] {'<'}).First().Trim();
+                //    }
+                //    adv.EsitmateEnd = ExtractEndDate(content);
 
-                    var auc = new AuctionSearch
-                    {
-                        AuctionRef = adv.Ref,
-                        DomainName = adv.DomainName,
-                        EstimateEndDate = (DateTime)adv.EsitmateEnd,
-                        EndDate =  (DateTime)adv.EsitmateEnd,
-                        MinBid = adv.DomainPrice ?? 0,
-                        AccountID = godaddyaccount.AccountID
-                    };
-                    ds.AuctionSearch.Add(auc);
-                    ds.SaveChanges();
-                    ds.AdvSearch.Add(adv);
-                    ds.SaveChanges();
-                }
+                //    var auc = new AuctionSearch
+                //    {
+                //        AuctionRef = adv.Ref,
+                //        DomainName = adv.DomainName,
+                //        EstimateEndDate = (DateTime)adv.EsitmateEnd,
+                //        EndDate =  (DateTime)adv.EsitmateEnd,
+                //        MinBid = adv.DomainPrice ?? 0,
+                //        AccountID = godaddyaccount.AccountID
+                //    };
+                //    ds.AuctionSearch.Add(auc);
+                //    ds.SaveChanges();
+                //    ds.AdvSearch.Add(adv);
+                //    ds.SaveChanges();
+                //}
                 
                 //json["aaData"][0]["1"]
             }

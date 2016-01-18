@@ -9,7 +9,7 @@ using ASEntityFramework;
 using AuctionSniperService.Business;
 using DeathByCaptcha;
 using HtmlAgilityPack;
-using LunchboxSource.Business.Http;
+using Lunchboxweb;
 using Exception = System.Exception;
 
 namespace AuctionSniperDLL.Business.Sites
@@ -142,8 +142,8 @@ namespace AuctionSniperDLL.Business.Sites
             var data = Get(string.Format(url, auctionRef));
 
             var minbid =
-                TryParse_INT(
-                    GetSubString(HTMLDecode(data),"Bid $",
+                TextModifier.TryParse_INT(
+                    GetSubString(HtmlDecode(data),"Bid $",
                         " or more").Trim().Replace(",", "").Replace("$", ""));
 
             var end = GetEndDate(auctionRef);
@@ -229,20 +229,20 @@ namespace AuctionSniperDLL.Business.Sites
                     if (QuerySelector(node, "span.OneLinkNoTx") != null && QuerySelector(node, "td:nth-child(5)") != null)
                     {
                         AuctionSearch auction = GenerateAuctionSearch();
-                        auction.DomainName = HTMLDecode(QuerySelector(node, "span.OneLinkNoTx").InnerText);
+                        auction.DomainName = HtmlDecode(QuerySelector(node, "span.OneLinkNoTx").InnerText);
                         Console.WriteLine(auction.DomainName);
 
-                        auction.BidCount = TryParse_INT(HTMLDecode(QuerySelector(node, "td:nth-child(5)").FirstChild.InnerHtml.Replace("&nbsp;", "")));
-                        auction.Traffic = TryParse_INT(HTMLDecode(QuerySelector(node, "td:nth-child(5) > td").InnerText.Replace("&nbsp;", "")));
-                        auction.Valuation = TryParse_INT(HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(2)").InnerText.Replace("&nbsp;", "")));
-                        auction.Price = TryParse_INT(HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(3)").InnerText).Replace("$", "").Replace(",", "").Replace("C", ""));
+                        auction.BidCount = TextModifier.TryParse_INT(HtmlDecode(QuerySelector(node, "td:nth-child(5)").FirstChild.InnerHtml.Replace("&nbsp;", "")));
+                        auction.Traffic = TextModifier.TryParse_INT(HtmlDecode(QuerySelector(node, "td:nth-child(5) > td").InnerText.Replace("&nbsp;", "")));
+                        auction.Valuation = TextModifier.TryParse_INT(HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(2)").InnerText.Replace("&nbsp;", "")));
+                        auction.Price = TextModifier.TryParse_INT(HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(3)").InnerText).Replace("$", "").Replace(",", "").Replace("C", ""));
                         try
                         {
                             if (QuerySelector(node, "td:nth-child(5) > td:nth-child(4) > div") != null)
                             {
-                                if (HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4) > div").InnerText).Contains("Buy Now for"))
+                                if (HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4) > div").InnerText).Contains("Buy Now for"))
                                 {
-                                    auction.BuyItNow = TryParse_INT(Regex.Split(HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4) > div").InnerText), "Buy Now for")[1].Trim().Replace(",", "").Replace("$", ""));
+                                    auction.BuyItNow = TextModifier.TryParse_INT(Regex.Split(HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4) > div").InnerText), "Buy Now for")[1].Trim().Replace(",", "").Replace("$", ""));
                                 }
 
                             }
@@ -255,25 +255,25 @@ namespace AuctionSniperDLL.Business.Sites
                         catch (Exception) { auction.BuyItNow = 0; }
 
                         if (QuerySelector(node, "td:nth-child(5) > td:nth-child(5)") != null &&
-                            HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)").InnerHtml).Contains("Bid $"))
+                            HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)").InnerHtml).Contains("Bid $"))
                         {
-                            auction.MinBid = TryParse_INT(GetSubString(HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)").InnerHtml), "Bid $", " or more").Trim().Replace(",", "").Replace("$", ""));
+                            auction.MinBid = TextModifier.TryParse_INT(GetSubString(HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)").InnerHtml), "Bid $", " or more").Trim().Replace(",", "").Replace("$", ""));
                         }
                         if (QuerySelector(node, "td:nth-child(5) > td:nth-child(5)") != null &&
-                            !HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)").InnerHtml).Contains("Bid $"))
+                            !HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)").InnerHtml).Contains("Bid $"))
                         {
                             auction.EstimateEndDate = GenerateEstimateEnd(QuerySelector(node, "td:nth-child(5) > td:nth-child(5)"));
                         }
                         if (QuerySelector(node, "td:nth-child(5) > td:nth-child(4)") != null &&
-                            HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4)").InnerHtml).Contains("Bid $"))
+                            HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4)").InnerHtml).Contains("Bid $"))
                         {
-                            auction.MinBid = TryParse_INT(GetSubString(HTMLDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4)").InnerHtml), "Bid $", " or more").Trim().Replace(",", "").Replace("$", ""));
+                            auction.MinBid = TextModifier.TryParse_INT(GetSubString(HtmlDecode(QuerySelector(node, "td:nth-child(5) > td:nth-child(4)").InnerHtml), "Bid $", " or more").Trim().Replace(",", "").Replace("$", ""));
                         }
                         if (QuerySelector(node, "td > div > span") != null)
                         {
                             foreach (var item in GetSubStrings(QuerySelector(node, "td > div > span").InnerHtml, "'Offer $", " or more"))
                             {
-                                auction.MinOffer = TryParse_INT(item.Replace(",", ""));
+                                auction.MinOffer = TextModifier.TryParse_INT(item.Replace(",", ""));
                             }
                         }
                         auction.EndDate = GetPacificTime;
@@ -543,7 +543,7 @@ namespace AuctionSniperDLL.Business.Sites
             var estimateEnd = GetPacificTime;
             if (node.InnerText != null)
             {
-                var vals = HTMLDecode(node.InnerText).Trim().Split(new [] { ' ' });
+                var vals = HtmlDecode(node.InnerText).Trim().Split(new[] { ' ' });
 
                 foreach (var item in vals)
                 {
