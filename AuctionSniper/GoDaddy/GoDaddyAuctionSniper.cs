@@ -167,6 +167,11 @@ namespace GoDaddy
             return data.Contains(domainName);
         }
 
+        public void GetWatchList()
+        {
+            //sec=Wa&sort=7&dir=A&page=1&rpp=50&rnd=0.9335414195303002
+        }
+
         /// <summary>
         /// Random double generator for requests
         /// </summary>
@@ -268,6 +273,11 @@ namespace GoDaddy
             }
 
             return results.AsQueryable();
+        }
+
+        public IQueryable<AuctionSearch> Search2(string searchText)
+        {
+            return null;
         }
 
         public IQueryable<AuctionSearch> Search(string searchText)

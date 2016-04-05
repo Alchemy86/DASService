@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
-using System.ServiceProcess;
 using System.Threading;
 using Ninject;
 

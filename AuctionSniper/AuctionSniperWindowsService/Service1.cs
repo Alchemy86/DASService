@@ -50,7 +50,7 @@ namespace AuctionSniperWindowsService
             {
                 ProcessingBids = false;
                 BidTime = SystemRepository.BidTime;
-                Email.SendEmail(SystemRepository.AlertEmail, "ServiceStarted", "Started Azure service",
+                Email.SendEmail(SystemRepository.AlertEmail, "ServiceStarted", "Started XGP DAS service",
                     Global.GetPacificTime);
                 CheckTimer = new Timer(10000); // Run every 10 sec
                 CheckDB();
@@ -167,7 +167,7 @@ namespace AuctionSniperWindowsService
                                 {
                                     var gd = new GoDaddyAuctionSniper(account.AccountUsername, UserRepository);
                                     gd.PlaceBid(auction1);
-                                    Email.SendEmail(SystemRepository.AlertEmail, "Azure: Placing a bid",
+                                    Email.SendEmail(SystemRepository.AlertEmail, "XGP: Placing a bid",
                                         "Account: " + account.Username + Environment.NewLine +
                                         "Site: " + auction1.DomainName, Global.GetPacificTime);
                                 }

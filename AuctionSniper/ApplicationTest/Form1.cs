@@ -20,15 +20,16 @@ namespace ApplicationTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GoDaddyAuctionSniper gd = new GoDaddyAuctionSniper("inna@medi-cons.com", _kernal.Get<IUserRepository>());
+            GoDaddyAuctionSniper gd = new GoDaddyAuctionSniper("seo@ezsolution.com", _kernal.Get<IUserRepository>());
             //var loggedin = gd.Login();
             var repo = _kernal.Get<ISystemRepository>();
-            var auc = repo.GetEndingAuctions().FirstOrDefault(x => x.DomainName == "newfantasy.net");
-            gd.PlaceBid(auc);
-            var resw = gd.GetEndDate("185921902");
+            gd.WinCheck("yolo.com");
+            //var auc = repo.GetEndingAuctions().FirstOrDefault(x => x.DomainName == "newfantasy.net");
+            //gd.PlaceBid(auc);
+            //var resw = gd.GetEndDate("185921902");
             
-            var res = repo.GetAlerts();
-            var moo = "";
+            //var res = repo.GetAlerts();
+            //var moo = "";
         }
     }
 }

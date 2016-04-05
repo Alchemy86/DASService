@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DeathByCaptcha">
-      <HintPath>..\..\..\..\..\Downloads\dbc_api_v4_2_dotnet\dbc_api_v4_2_dotnet\lib\DeathByCaptcha.dll</HintPath>
+      <HintPath>..\..\3rdPartyDll\DeathByCaptcha.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Lunchboxweb">
-      <HintPath>..\..\AuctionSniper\Lunchboxweb\bin\Release\Lunchboxweb.dll</HintPath>
+      <HintPath>..\..\AuctionSniper\Lunchboxweb\bin\Debug\Lunchboxweb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
