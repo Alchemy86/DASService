@@ -16,14 +16,14 @@ namespace ApplicationTest
         public override void Load()
         {
             var mockObject = new Mock<IGoDaddySession>();
-            mockObject.Setup(x => x.Username).Returns("aarongioucash1@hotmail.com");
-            mockObject.Setup(x => x.Password).Returns("elementals1");
+            mockObject.Setup(x => x.Username).Returns("useremail");
+            mockObject.Setup(x => x.Password).Returns("password");
             mockObject.Setup(x => x.GoDaddyAccount).Returns(
                 new GoDaddyAccount
                 {
                     AccountId = Guid.NewGuid(),
-                    Username = "trevmedia",
-                    Password = "J021092p!",
+                    Username = "username",
+                    Password = "password",
                     Verified = false
                 });
             Bind<IGoDaddySession>().ToConstant(mockObject.Object);

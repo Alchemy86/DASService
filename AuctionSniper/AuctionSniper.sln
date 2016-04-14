@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunchboxweb", "Lunchboxweb\Lunchboxweb.csproj", "{FCB65216-825D-4C9B-8308-AE36DEBFDC38}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAS.DependencyResolution", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionSniperWindowsService", "AuctionSniperWindowsService\AuctionSniperWindowsService.csproj", "{687D2F11-01F4-4184-87A5-28A431F93182}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "DASServiceSetup", "DASServiceSetup\DASServiceSetup.isproj", "{F332FA12-6748-4B6C-AC83-753BF2008B77}"
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "ServiceSetup2016", "ServiceSetup2016\ServiceSetup2016.isproj", "{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,16 +98,16 @@ Global
 		{687D2F11-01F4-4184-87A5-28A431F93182}.Release|Any CPU.Build.0 = Release|Any CPU
 		{687D2F11-01F4-4184-87A5-28A431F93182}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{687D2F11-01F4-4184-87A5-28A431F93182}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.CD_ROM|Any CPU.Build.0 = CD_ROM
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.Debug|Any CPU.ActiveCfg = DVD-5
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.Debug|Any CPU.Build.0 = DVD-5
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.DVD-5|Any CPU.ActiveCfg = DVD-5
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.DVD-5|Any CPU.Build.0 = DVD-5
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.Release|Any CPU.ActiveCfg = SingleImage
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.Release|Any CPU.Build.0 = SingleImage
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.SingleImage|Any CPU.ActiveCfg = SingleImage
-		{F332FA12-6748-4B6C-AC83-753BF2008B77}.SingleImage|Any CPU.Build.0 = SingleImage
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.Debug|Any CPU.ActiveCfg = DVD-5
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.Debug|Any CPU.Build.0 = DVD-5
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.DVD-5|Any CPU.Build.0 = DVD-5
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.Release|Any CPU.ActiveCfg = SingleImage
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.Release|Any CPU.Build.0 = SingleImage
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{2D005C38-C2C2-4DF5-A7A1-DE8ED6417A04}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
