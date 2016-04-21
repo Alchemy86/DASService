@@ -8,6 +8,7 @@ namespace DAL
         public ASEntities()
             : base("name=ASEntities")
         {
+            Database.SetInitializer<ASEntities>(null);
         }
 
         public virtual DbSet<AdvSearch> AdvSearch { get; set; }

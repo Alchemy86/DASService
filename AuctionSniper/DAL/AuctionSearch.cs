@@ -9,6 +9,11 @@ namespace DAL
     [Table("AuctionSearch")]
     public partial class AuctionSearch
     {
+        public AuctionSearch()
+        {
+            AuctionID = Guid.NewGuid();
+        }
+
         [Key]
         public Guid AuctionID { get; set; }
 

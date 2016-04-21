@@ -108,7 +108,7 @@ namespace AuctionSniperWindowsService
                 var message = ex.Message + Environment.NewLine +
                           ex.StackTrace + Environment.NewLine;
                 message += ex.InnerException.Message;
-                Email.SendEmail(SystemRepository.AlertEmail, "Azure Service Error - Alerts",
+                Email.SendEmail(SystemRepository.AlertEmail, "XGP Service Error - Alerts",
                         ex.Message + Environment.NewLine +
                         ex.StackTrace + Environment.NewLine, Global.GetPacificTime);
             }
@@ -300,7 +300,7 @@ namespace AuctionSniperWindowsService
 
         protected override void OnStop()
         {
-            Email.SendEmail(SystemRepository.AlertEmail, "Azure Service Stopped", "Stopped the service", Global.GetPacificTime);
+            Email.SendEmail(SystemRepository.AlertEmail, "XGP Service Stopped", "Stopped the service", Global.GetPacificTime);
             Console.WriteLine(@"Service Stopped");
         }
     }

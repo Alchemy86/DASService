@@ -91,6 +91,26 @@
     <Compile Include="Migrations\201601100101208_Alerts.Designer.cs">
       <DependentUpon>201601100101208_Alerts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604201736415_default.cs" />
+    <Compile Include="Migrations\201604201736415_default.Designer.cs">
+      <DependentUpon>201604201736415_default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604201742435_datadefaults.cs" />
+    <Compile Include="Migrations\201604201742435_datadefaults.Designer.cs">
+      <DependentUpon>201604201742435_datadefaults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604201753489_datadefaults2.cs" />
+    <Compile Include="Migrations\201604201753489_datadefaults2.Designer.cs">
+      <DependentUpon>201604201753489_datadefaults2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604201807235_datadefaultsCorrection.cs" />
+    <Compile Include="Migrations\201604201807235_datadefaultsCorrection.Designer.cs">
+      <DependentUpon>201604201807235_datadefaultsCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604201809246_datadefaultsCorrection2.cs" />
+    <Compile Include="Migrations\201604201809246_datadefaultsCorrection2.Designer.cs">
+      <DependentUpon>201604201809246_datadefaultsCorrection2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ASEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +138,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601100101208_Alerts.resx">
       <DependentUpon>201601100101208_Alerts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201736415_default.resx">
+      <DependentUpon>201604201736415_default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201742435_datadefaults.resx">
+      <DependentUpon>201604201742435_datadefaults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201753489_datadefaults2.resx">
+      <DependentUpon>201604201753489_datadefaults2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201807235_datadefaultsCorrection.resx">
+      <DependentUpon>201604201807235_datadefaultsCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201809246_datadefaultsCorrection2.resx">
+      <DependentUpon>201604201809246_datadefaultsCorrection2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
