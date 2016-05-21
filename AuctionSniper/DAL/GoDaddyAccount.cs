@@ -15,6 +15,7 @@ namespace DAL
             Auctions = new HashSet<Auctions>();
             AuctionSearch = new HashSet<AuctionSearch>();
             BackOrders = new HashSet<BackOrders>();
+            AccountID = Guid.NewGuid();
         }
 
         [Key]

@@ -54,7 +54,7 @@ namespace GoDaddy
         /// Login to godaddy auctions
         /// </summary>
         /// <returns></returns>
-        public bool Login(int attempNo = 0)
+        public bool Login(int attempNo = 0, string username = null, string password = null)
         {
             const string url = "https://auctions.godaddy.com/";
             var responseData = Get(url);
@@ -63,7 +63,7 @@ namespace GoDaddy
             {
                 return true;
             }
-            var key = GetSubString(responseData, "spkey=", "\"");
+            var key = GetSubString(responseData, "SPKey=", "\"");
             var loginurl = string.Format("https://idp.godaddy.com/login.aspx?SPKey={0}", key);
             var hdoc = HtmlDocument(Get(loginurl));
             if (QuerySelector(hdoc.DocumentNode, "img[class='LBD_CaptchaImage']") != null)
@@ -78,7 +78,7 @@ namespace GoDaddy
 
                 try
                 {
-                    imagedata.Save(Path.Combine(Path.GetTempPath(), _sessionDetails.GoDaddyAccount.Username + ".jpg"), ImageFormat.Jpeg);
+                    imagedata.Save(Path.Combine(Path.GetTempPath(), username ?? _sessionDetails.GoDaddyAccount.Username + ".jpg"), ImageFormat.Jpeg);
                     Client client;
                     var user = _sessionDetails.DeathByCapture.Username;
                     var pass = _sessionDetails.DeathByCapture.Password;
@@ -122,12 +122,12 @@ namespace GoDaddy
                 var secondaryLogin = string.Format("https://sso.godaddy.com/?app=idp&path=%2flogin.aspx%3fSPKey%3d{0}", key);
 
                 var loginData = string.Format("loginName={0}&password={1}",
-                    Uri.EscapeDataString(_sessionDetails.GoDaddyAccount.Username),
-                    Uri.EscapeDataString(_sessionDetails.GoDaddyAccount.Password));
+                    Uri.EscapeDataString(username ?? _sessionDetails.GoDaddyAccount.Username),
+                    Uri.EscapeDataString(password ?? _sessionDetails.GoDaddyAccount.Password));
                 var firstLoginResponse = Post(loginurl, loginData);
                 var login2Data = string.Format("name={0}&password={1}",
-                    Uri.EscapeDataString(_sessionDetails.GoDaddyAccount.Username),
-                    Uri.EscapeDataString(_sessionDetails.GoDaddyAccount.Password));
+                    Uri.EscapeDataString(username ?? _sessionDetails.GoDaddyAccount.Username),
+                    Uri.EscapeDataString(password ?? _sessionDetails.GoDaddyAccount.Password));
 
                 var secondaryLoginResponse = Post(secondaryLogin, login2Data);
 

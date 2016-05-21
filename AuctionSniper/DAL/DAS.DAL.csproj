@@ -111,6 +111,18 @@
     <Compile Include="Migrations\201604201809246_datadefaultsCorrection2.Designer.cs">
       <DependentUpon>201604201809246_datadefaultsCorrection2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605182140559_DefaultsFix.cs" />
+    <Compile Include="Migrations\201605182140559_DefaultsFix.Designer.cs">
+      <DependentUpon>201605182140559_DefaultsFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605182145547_DefaultsFix2.cs" />
+    <Compile Include="Migrations\201605182145547_DefaultsFix2.Designer.cs">
+      <DependentUpon>201605182145547_DefaultsFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605182156026_Testag.cs" />
+    <Compile Include="Migrations\201605182156026_Testag.Designer.cs">
+      <DependentUpon>201605182156026_Testag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ASEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,6 +165,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604201809246_datadefaultsCorrection2.resx">
       <DependentUpon>201604201809246_datadefaultsCorrection2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605182140559_DefaultsFix.resx">
+      <DependentUpon>201605182140559_DefaultsFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605182145547_DefaultsFix2.resx">
+      <DependentUpon>201605182145547_DefaultsFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605182156026_Testag.resx">
+      <DependentUpon>201605182156026_Testag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

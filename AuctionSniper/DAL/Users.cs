@@ -12,6 +12,7 @@ namespace DAL
         public Users()
         {
             GoDaddyAccount = new HashSet<GoDaddyAccount>();
+            UserID = Guid.NewGuid();
         }
 
         [Key]
