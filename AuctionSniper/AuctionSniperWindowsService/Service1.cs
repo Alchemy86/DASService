@@ -150,8 +150,7 @@ namespace AuctionSniperWindowsService
                 {
                     var ts =
                         auction.EndDate.Subtract(Global.GetPacificTime);
-                    if (ts.TotalSeconds < Convert.ToInt32(BidTime) &&
-                        (auction.MinBid < auction.MyBid || auction.MinBid == auction.MyBid) && ts.TotalSeconds > 0)
+                    if (ts.TotalSeconds < Convert.ToInt32(BidTime) && ts.TotalSeconds > 0)
                     {
                         try
                         {
